@@ -33,6 +33,7 @@
             this.dialog = new System.Windows.Forms.FolderBrowserDialog();
             this.directoryTree = new System.Windows.Forms.TreeView();
             this.directoryIcons = new System.Windows.Forms.ImageList(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // directoryTree
@@ -42,30 +43,38 @@
             this.directoryTree.Location = new System.Drawing.Point(17, 17);
             this.directoryTree.Name = "directoryTree";
             this.directoryTree.SelectedImageIndex = 0;
-            this.directoryTree.Size = new System.Drawing.Size(257, 178);
+            this.directoryTree.Size = new System.Drawing.Size(273, 178);
             this.directoryTree.StateImageList = this.directoryIcons;
             this.directoryTree.TabIndex = 0;
-            this.directoryTree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.directoryTree_BeforeExpand);
-            this.directoryTree.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.directoryTree_AfterExpand);
             this.directoryTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.directoryTree_AfterSelect);
             // 
             // directoryIcons
             // 
             this.directoryIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("directoryIcons.ImageStream")));
             this.directoryIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.directoryIcons.Images.SetKeyName(0, "favicon-.ico");
-            this.directoryIcons.Images.SetKeyName(1, "favicon-20181227073740130.ico");
-            this.directoryIcons.Images.SetKeyName(2, "favicon-20181227073740902.ico");
-            this.directoryIcons.Images.SetKeyName(3, "favicon-20181227073740142.ico");
-            this.directoryIcons.Images.SetKeyName(4, "favicon-20181227073740630.ico");
+            this.directoryIcons.Images.SetKeyName(0, "favicon-20181227073740130.ico");
+            this.directoryIcons.Images.SetKeyName(1, "favicon-20181227073740630.ico");
+            this.directoryIcons.Images.SetKeyName(2, "cf21ae978489c2bf6c984f91a543958.png");
+            this.directoryIcons.Images.SetKeyName(3, "2399eecfc7d95fcbb2d8776ccd529ae.png");
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(107, 201);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 32);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "刷新";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ViewFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.directoryTree);
             this.Name = "ViewFile";
-            this.Size = new System.Drawing.Size(290, 212);
+            this.Size = new System.Drawing.Size(306, 236);
             this.Load += new System.EventHandler(this.ViewFile_Load);
             this.ResumeLayout(false);
 
@@ -76,5 +85,6 @@
         private System.Windows.Forms.FolderBrowserDialog dialog;
         private System.Windows.Forms.TreeView directoryTree;
         private System.Windows.Forms.ImageList directoryIcons;
+        private System.Windows.Forms.Button button1;
     }
 }

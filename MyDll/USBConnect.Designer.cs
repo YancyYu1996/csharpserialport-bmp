@@ -44,7 +44,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.BoundBox);
@@ -52,52 +52,58 @@
             this.panel1.Controls.Add(this.OpenBut);
             this.panel1.Controls.Add(this.ComStause);
             this.panel1.Controls.Add(this.USBConBox);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(204, 128);
+            this.panel1.Size = new System.Drawing.Size(272, 160);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 87);
+            this.label2.Location = new System.Drawing.Point(4, 109);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.Size = new System.Drawing.Size(60, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "波特率;";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 33);
+            this.label1.Location = new System.Drawing.Point(4, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(60, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "端口号:";
             // 
             // BoundBox
             // 
             this.BoundBox.FormattingEnabled = true;
-            this.BoundBox.Location = new System.Drawing.Point(56, 84);
+            this.BoundBox.Location = new System.Drawing.Point(75, 105);
+            this.BoundBox.Margin = new System.Windows.Forms.Padding(4);
             this.BoundBox.Name = "BoundBox";
-            this.BoundBox.Size = new System.Drawing.Size(132, 20);
+            this.BoundBox.Size = new System.Drawing.Size(175, 23);
             this.BoundBox.TabIndex = 3;
             // 
             // FindS
             // 
             this.FindS.AutoSize = true;
-            this.FindS.Font = new System.Drawing.Font("华文琥珀", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FindS.Location = new System.Drawing.Point(120, 13);
+            this.FindS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FindS.Location = new System.Drawing.Point(160, 16);
+            this.FindS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FindS.Name = "FindS";
-            this.FindS.Size = new System.Drawing.Size(0, 14);
+            this.FindS.Size = new System.Drawing.Size(0, 22);
             this.FindS.TabIndex = 2;
             // 
             // OpenBut
             // 
-            this.OpenBut.Location = new System.Drawing.Point(62, 55);
+            this.OpenBut.Location = new System.Drawing.Point(111, 69);
+            this.OpenBut.Margin = new System.Windows.Forms.Padding(4);
             this.OpenBut.Name = "OpenBut";
-            this.OpenBut.Size = new System.Drawing.Size(75, 23);
+            this.OpenBut.Size = new System.Drawing.Size(100, 29);
             this.OpenBut.TabIndex = 1;
             this.OpenBut.Text = "打开串口";
             this.OpenBut.UseVisualStyleBackColor = true;
@@ -106,18 +112,20 @@
             // ComStause
             // 
             this.ComStause.AutoSize = true;
-            this.ComStause.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ComStause.Location = new System.Drawing.Point(32, 14);
+            this.ComStause.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComStause.Location = new System.Drawing.Point(43, 18);
+            this.ComStause.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ComStause.Name = "ComStause";
-            this.ComStause.Size = new System.Drawing.Size(0, 12);
+            this.ComStause.Size = new System.Drawing.Size(0, 18);
             this.ComStause.TabIndex = 1;
             // 
             // USBConBox
             // 
             this.USBConBox.FormattingEnabled = true;
-            this.USBConBox.Location = new System.Drawing.Point(56, 30);
+            this.USBConBox.Location = new System.Drawing.Point(75, 38);
+            this.USBConBox.Margin = new System.Windows.Forms.Padding(4);
             this.USBConBox.Name = "USBConBox";
-            this.USBConBox.Size = new System.Drawing.Size(132, 20);
+            this.USBConBox.Size = new System.Drawing.Size(175, 23);
             this.USBConBox.TabIndex = 0;
             this.USBConBox.SelectedIndexChanged += new System.EventHandler(this.USBConBox_SelectedIndexChanged);
             // 
@@ -131,11 +139,12 @@
             // 
             // USBConnect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "USBConnect";
-            this.Size = new System.Drawing.Size(210, 134);
+            this.Size = new System.Drawing.Size(280, 168);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
