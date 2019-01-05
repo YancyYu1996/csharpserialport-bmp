@@ -31,8 +31,8 @@ namespace Upper_LCD_STM32
             this.usbConnect1.ComPort.DataReceived += new SerialDataReceivedEventHandler(Comm_DataReceived);
             ReseveHex.Checked = true;
             SendHex.Checked = true;
-            //RecevieArea.Text = MyDll.VitualUSB.defaultPath;
-             ADDdata(MyDll.VitualUSB.defaultPath);
+            
+
 
         }
         private void Comm_DataReceived(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace Upper_LCD_STM32
                                 else
                                 strRcv += Convert.ToString(d, 16); ;
                         }
-                        ADDdata(strRcv);                 //显示信息
+                        RecieveArea.Text += strRcv;                 //显示信息
                         //strRcv + "\r\n";             //显示信息
                             
                             
@@ -103,10 +103,9 @@ namespace Upper_LCD_STM32
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: 这行代码将数据加载到表“databaseDataSet.Table”中。您可以根据需要移动或删除它。
-            //this.tableTableAdapter.Fill(this.databaseDataSet.Table);
-            tabPage1.ImageIndex = 3;
-            tabPage2.ImageIndex = 1;
+           
+            tabPage1.ImageIndex = 4;
+            tabPage2.ImageIndex = 2;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -145,8 +144,7 @@ namespace Upper_LCD_STM32
 
         private void SendBut_Click_1(object sender, EventArgs e)
         {
-           
-
+            
             if (!this.usbConnect1.ComPort.IsOpen) //如果没打开
             {
                 MessageBox.Show("请先打开串口！", "Error");
@@ -226,7 +224,7 @@ namespace Upper_LCD_STM32
             }
             else if (tabControl1.SelectedIndex == 1)
             {
-                this.DataReadView.Rows.Clear();
+                this.RecieveArea.Clear();
             }
 
         }
@@ -290,22 +288,7 @@ namespace Upper_LCD_STM32
 
 
         //这个是按钮的事件
-        protected void ADDdata(string strRcv)
-        {
-           
-           int index = this.DataReadView.Rows.Add();
-            this.DataReadView.Rows[index].Cells[RecevieCounter].Value = strRcv;
-
-            RecevieCounter += 1;
-
-            //int newrowindex = DataReadView.Rows.Add();
-            //DataGridViewRow row = DataReadView.Rows[newrowindex];
-           // row.Cells[RecevieCounter].Value = strRcv;
-           // row.Cells[RecevieCounter].Value = p.ProcessName;
-            
-
-
-        }
+       
 
         private void DataSendView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -320,6 +303,31 @@ namespace Upper_LCD_STM32
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SendArea_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void viewFile3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (SendArea.Text != ViewFile.data)
+            {
+                SendArea.Text = ViewFile.data;
+
+            }
+                
         }
     }
     }

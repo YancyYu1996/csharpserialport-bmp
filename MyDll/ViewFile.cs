@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
 
 namespace MyDll
 {
@@ -19,6 +21,7 @@ namespace MyDll
         /// IconIndexs类 对应ImageList中5张图片的序列
 
         /// </summary>
+        public static string data;  //全局变量 图片数据
 
         private class IconIndexes
 
@@ -81,15 +84,20 @@ namespace MyDll
             {
                 string[] fileNames = Directory.GetFiles(path);
                 string[] directories = Directory.GetDirectories(path);
-       
+                DirectoryInfo folder = new DirectoryInfo(path);
+                tn.Text = folder.Name;
+                tn.Tag = folder.FullName;
+
                 //先遍历这个目录下的文件夹
                 foreach (string dir in directories)
                 {
 
                     TreeNode subtn = new TreeNode();
-
+                 
+                    subtn.Tag = dir;
+                    
                     subtn.Text = GetShorterFileName(dir);
-
+                    
                     getDirectories(dir, subtn);
                     subtn.SelectedImageIndex = IconIndexes.OpenFolder; //选择节点显示图片
                     tn.Nodes.Add(subtn);
@@ -100,16 +108,19 @@ namespace MyDll
                 //再遍历这个目录下的文件
                 foreach (string file in fileNames)
                 {
-
+                    
                     TreeNode subtn = new TreeNode();
-
+                    
                     subtn.Text = GetShorterFileName(file);
+                    subtn.Tag =  file;
                     if (file == "(*.txt)")
                     {
+                        
                         subtn.SelectedImageIndex = IconIndexes.MyFileTXT; //选择节点显示图片
                     }
-                    else if (file == "(*.jpg | *.bmp)")
+                    else if (file == "(*.jpg)"| file == "(*.bmp)")
                     {
+                        
                         subtn.SelectedImageIndex = IconIndexes.MyFilePng;//选择节点显示图片
                     }
                     else
@@ -155,10 +166,33 @@ namespace MyDll
         }
   
         
-        private void directoryTree_AfterSelect(object sender, TreeViewEventArgs e)
+        public void directoryTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
+
+            textBox1.Text = Convert.ToString(e.Node.Tag);
+            ScriptEngine pyEngine = Python.CreateEngine();//创建Python解释器对象
+            dynamic py = pyEngine.ExecuteFile(@"OpenPng.py");//读取脚本文件
+            try {
+                data = py.OpenPng(textBox1.Text);//调用脚本文件中对应的函数
+                textBox1.Text = data;
+            }
+            catch
+            {
+
+            }
             
-          
+      
+            try
+            {
+                pictureBox1.Image = Image.FromFile(@textBox1.Text);
+            }
+            catch
+            {
+                pictureBox1.Image = pictureBox1.ErrorImage;
+            }
+            
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -173,6 +207,16 @@ namespace MyDll
 
             directoryTree.Nodes.Add(tn);
             tn.Expand();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
     }

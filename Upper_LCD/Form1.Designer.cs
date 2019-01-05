@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SendID = new System.Windows.Forms.TextBox();
             this.ReciveID = new System.Windows.Forms.TextBox();
@@ -54,37 +53,29 @@
             this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label4 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.SendArea = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.DataReadView = new System.Windows.Forms.DataGridView();
-            this.Byte1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Byte2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Byte3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Byte4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Byte5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Byte6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Byte7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Byte8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.RecieveArea = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.SendArea = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.usbConnect3 = new MyDll.USBConnect();
             this.viewFile3 = new MyDll.ViewFile();
             this.viewFile1 = new MyDll.ViewFile();
             this.usbConnect1 = new MyDll.USBConnect();
             this.usbConnect2 = new MyDll.USBConnect();
             this.viewFile2 = new MyDll.ViewFile();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataReadView)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -124,6 +115,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1021, 28);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // 新建ToolStripMenuItem
             // 
@@ -224,11 +216,11 @@
             // 
             this.groupBox3.Controls.Add(this.ReseveHex);
             this.groupBox3.Controls.Add(this.ReseveStr);
-            this.groupBox3.Location = new System.Drawing.Point(16, 509);
+            this.groupBox3.Location = new System.Drawing.Point(16, 639);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(189, 47);
+            this.groupBox3.Size = new System.Drawing.Size(186, 47);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "接收数据格式";
@@ -237,7 +229,7 @@
             // 
             this.groupBox4.Controls.Add(this.SendHex);
             this.groupBox4.Controls.Add(this.SendStr);
-            this.groupBox4.Location = new System.Drawing.Point(16, 458);
+            this.groupBox4.Location = new System.Drawing.Point(16, 685);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
@@ -273,7 +265,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(60, 564);
+            this.button2.Location = new System.Drawing.Point(227, 649);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 29);
@@ -311,137 +303,10 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "请选择图片：";
             // 
-            // tabControl1
-            // 
-            this.tabControl1.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.ImageList = this.imageList1;
-            this.tabControl1.Location = new System.Drawing.Point(324, 173);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(657, 437);
-            this.tabControl1.TabIndex = 27;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
-            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage1.Controls.Add(this.SendArea);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(649, 408);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "发送数据区";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // SendArea
-            // 
-            this.SendArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.SendArea.Location = new System.Drawing.Point(-2, 0);
-            this.SendArea.Multiline = true;
-            this.SendArea.Name = "SendArea";
-            this.SendArea.Size = new System.Drawing.Size(649, 410);
-            this.SendArea.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.tabPage2.BackgroundImage = global::Upper_LCD.Properties.Resources._31;
-            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage2.Controls.Add(this.DataReadView);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(649, 408);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "接收数据区";
-            // 
-            // DataReadView
-            // 
-            this.DataReadView.AllowUserToOrderColumns = true;
-            this.DataReadView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataReadView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DataReadView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataReadView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Byte1,
-            this.Byte2,
-            this.Byte3,
-            this.Byte4,
-            this.Byte5,
-            this.Byte6,
-            this.Byte7,
-            this.Byte8});
-            this.DataReadView.Location = new System.Drawing.Point(-2, -2);
-            this.DataReadView.Name = "DataReadView";
-            this.DataReadView.RowTemplate.Height = 27;
-            this.DataReadView.Size = new System.Drawing.Size(646, 410);
-            this.DataReadView.TabIndex = 14;
-            this.DataReadView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Byte1
-            // 
-            this.Byte1.HeaderText = "Byte1";
-            this.Byte1.Name = "Byte1";
-            // 
-            // Byte2
-            // 
-            this.Byte2.HeaderText = "Byte2";
-            this.Byte2.Name = "Byte2";
-            // 
-            // Byte3
-            // 
-            this.Byte3.HeaderText = "Byte3";
-            this.Byte3.Name = "Byte3";
-            // 
-            // Byte4
-            // 
-            this.Byte4.HeaderText = "Byte4";
-            this.Byte4.Name = "Byte4";
-            // 
-            // Byte5
-            // 
-            this.Byte5.HeaderText = "Byte5";
-            this.Byte5.Name = "Byte5";
-            // 
-            // Byte6
-            // 
-            this.Byte6.HeaderText = "Byte6";
-            this.Byte6.Name = "Byte6";
-            // 
-            // Byte7
-            // 
-            this.Byte7.HeaderText = "Byte7";
-            this.Byte7.Name = "Byte7";
-            // 
-            // Byte8
-            // 
-            this.Byte8.HeaderText = "Byte8";
-            this.Byte8.Name = "Byte8";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "2.png");
-            this.imageList1.Images.SetKeyName(1, "3.png");
-            this.imageList1.Images.SetKeyName(2, "4.png");
-            this.imageList1.Images.SetKeyName(3, "5.png");
-            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 661);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 758);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip1.Size = new System.Drawing.Size(1021, 22);
@@ -481,6 +346,79 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage2.BackgroundImage")));
+            this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.RecieveArea);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(649, 408);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "接收数据区";
+            // 
+            // RecieveArea
+            // 
+            this.RecieveArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.RecieveArea.Location = new System.Drawing.Point(-2, -4);
+            this.RecieveArea.Multiline = true;
+            this.RecieveArea.Name = "RecieveArea";
+            this.RecieveArea.Size = new System.Drawing.Size(649, 410);
+            this.RecieveArea.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
+            this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.SendArea);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(649, 408);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "发送数据区";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // SendArea
+            // 
+            this.SendArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.SendArea.Location = new System.Drawing.Point(-2, 0);
+            this.SendArea.Multiline = true;
+            this.SendArea.Name = "SendArea";
+            this.SendArea.Size = new System.Drawing.Size(649, 410);
+            this.SendArea.TabIndex = 0;
+            this.SendArea.TextChanged += new System.EventHandler(this.SendArea_TextChanged_1);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.ImageList = this.imageList1;
+            this.tabControl1.Location = new System.Drawing.Point(324, 173);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(657, 437);
+            this.tabControl1.TabIndex = 27;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1.png");
+            this.imageList1.Images.SetKeyName(1, "2.png");
+            this.imageList1.Images.SetKeyName(2, "3.png");
+            this.imageList1.Images.SetKeyName(3, "4.png");
+            this.imageList1.Images.SetKeyName(4, "5.png");
+            this.imageList1.Images.SetKeyName(5, "6.png");
+            this.imageList1.Images.SetKeyName(6, "360截图18430701415560.png");
+            // 
             // usbConnect3
             // 
             this.usbConnect3.Location = new System.Drawing.Point(13, 33);
@@ -493,8 +431,9 @@
             // 
             this.viewFile3.Location = new System.Drawing.Point(0, 223);
             this.viewFile3.Name = "viewFile3";
-            this.viewFile3.Size = new System.Drawing.Size(299, 237);
+            this.viewFile3.Size = new System.Drawing.Size(311, 409);
             this.viewFile3.TabIndex = 26;
+            this.viewFile3.Load += new System.EventHandler(this.viewFile3_Load);
             // 
             // viewFile1
             // 
@@ -527,13 +466,17 @@
             this.viewFile2.Size = new System.Drawing.Size(299, 212);
             this.viewFile2.TabIndex = 26;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1021, 683);
+            this.ClientSize = new System.Drawing.Size(1021, 780);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.statusStrip1);
@@ -573,11 +516,11 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DataReadView)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,23 +557,16 @@
         private MyDll.ViewFile viewFile2;
         private MyDll.USBConnect usbConnect3;
         private MyDll.ViewFile viewFile3;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView DataReadView;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.TextBox SendArea;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox RecieveArea;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox SendArea;
+        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Byte8;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

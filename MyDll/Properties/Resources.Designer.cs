@@ -59,5 +59,15 @@ namespace MyDll.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _6b8c14f8jw1f46bijbxq4j219c0rytdz {
+            get {
+                object obj = ResourceManager.GetObject("6b8c14f8jw1f46bijbxq4j219c0rytdz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
