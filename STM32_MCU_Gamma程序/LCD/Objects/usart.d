@@ -2,7 +2,7 @@
 .\objects\usart.o: .\SYSTEM\sys\sys.h
 .\objects\usart.o: .\USER\stm32f10x.h
 .\objects\usart.o: .\CMSIS\core_cm3.h
-.\objects\usart.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usart.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\usart.o: .\CMSIS\system_stm32f10x.h
 .\objects\usart.o: .\USER\stm32f10x_conf.h
 .\objects\usart.o: .\FWlib\inc\stm32f10x_adc.h
@@ -30,4 +30,4 @@
 .\objects\usart.o: .\FWlib\inc\stm32f10x_wwdg.h
 .\objects\usart.o: .\FWlib\inc\misc.h
 .\objects\usart.o: SYSTEM\usart\usart.h
-.\objects\usart.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdio.h

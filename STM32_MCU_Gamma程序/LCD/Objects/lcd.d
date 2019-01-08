@@ -2,7 +2,7 @@
 .\objects\lcd.o: LCD\lcd.h
 .\objects\lcd.o: .\USER\stm32f10x.h
 .\objects\lcd.o: .\CMSIS\core_cm3.h
-.\objects\lcd.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\lcd.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\lcd.o: .\CMSIS\system_stm32f10x.h
 .\objects\lcd.o: .\USER\stm32f10x_conf.h
 .\objects\lcd.o: .\FWlib\inc\stm32f10x_adc.h
@@ -29,8 +29,8 @@
 .\objects\lcd.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\lcd.o: .\FWlib\inc\stm32f10x_wwdg.h
 .\objects\lcd.o: .\FWlib\inc\misc.h
-.\objects\lcd.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\lcd.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\lcd.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\lcd.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\lcd.o: .\SYSTEM\delay\delay.h
 .\objects\lcd.o: .\SYSTEM\sys\sys.h
 .\objects\lcd.o: .\SYSTEM\fatfs\src\ff.h

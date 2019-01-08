@@ -4,4 +4,4 @@
 .\objects\ff.o: SYSTEM\fatfs\src\ffconf.h
 .\objects\ff.o: SYSTEM\fatfs\src\diskio.h
 .\objects\ff.o: SYSTEM\fatfs\src\ffconf.h
-.\objects\ff.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\ff.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdarg.h

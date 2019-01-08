@@ -1,7 +1,7 @@
 .\objects\main.o: USER\main.c
 .\objects\main.o: USER\stm32f10x.h
 .\objects\main.o: .\CMSIS\core_cm3.h
-.\objects\main.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: .\CMSIS\system_stm32f10x.h
 .\objects\main.o: USER\stm32f10x_conf.h
 .\objects\main.o: .\FWlib\inc\stm32f10x_adc.h
@@ -28,13 +28,13 @@
 .\objects\main.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\main.o: .\FWlib\inc\stm32f10x_wwdg.h
 .\objects\main.o: .\FWlib\inc\misc.h
-.\objects\main.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: USER\main.h
 .\objects\main.o: .\SYSTEM\sys\sys.h
 .\objects\main.o: .\SYSTEM\delay\delay.h
 .\objects\main.o: .\SYSTEM\usart\usart.h
 .\objects\main.o: .\LCD\lcd.h
-.\objects\main.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: .\SYSTEM\fatfs\src\ff.h
 .\objects\main.o: .\SYSTEM\fatfs\src\integer.h
 .\objects\main.o: .\SYSTEM\fatfs\src\ffconf.h

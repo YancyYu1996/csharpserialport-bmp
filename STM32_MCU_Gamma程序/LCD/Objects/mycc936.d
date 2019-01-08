@@ -5,7 +5,7 @@
 .\objects\mycc936.o: .\SYSTEM\sys\sys.h
 .\objects\mycc936.o: .\USER\stm32f10x.h
 .\objects\mycc936.o: .\CMSIS\core_cm3.h
-.\objects\mycc936.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mycc936.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\mycc936.o: .\CMSIS\system_stm32f10x.h
 .\objects\mycc936.o: .\USER\stm32f10x_conf.h
 .\objects\mycc936.o: .\FWlib\inc\stm32f10x_adc.h

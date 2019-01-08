@@ -12,6 +12,10 @@ using MyDll;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Documents;
+using System.IO;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
+using System.Text.RegularExpressions;
 
 namespace Upper_LCD_STM32
 {
@@ -22,41 +26,74 @@ namespace Upper_LCD_STM32
         public Displaydelegate disp_delegate;
         public String ReadMold = "";
         public static int RecevieCounter = 0;
-        
-        public Form1()
+        static int y;
+        byte[] BytesRGB = new byte[3000];
+        int width;   //定义图片的长
+        int height;  //定义图片的宽
+        byte red;
+        byte green;
+        byte blue;
+        private class IconIndexes
+
         {
 
-            InitializeComponent();
-      
-            this.usbConnect1.ComPort.DataReceived += new SerialDataReceivedEventHandler(Comm_DataReceived);
-            ReseveHex.Checked = true;
-            SendHex.Checked = true;
-            
 
+            public const int OpenFolder = 0;      //文件夹打开
+
+
+            public const int MyDocuments = 1;     //我的文档
+
+            public const int MyFileTXT = 2;     //我的txt文档
+
+            public const int MyFilePng = 3;     //我的图片
 
         }
+        /// <summary>
+        /// Form1的创建
+        /// </summary>
+        /// <param name="sender">基类</param>
+        /// <param name="e">中断事件</param>
+        public Form1()
+        {
+            InitializeComponent();
+            timer1.Tick += new EventHandler(timer1_Tick); //给timer挂起事件
+            usbConnect3.ComPort.DataReceived += new SerialDataReceivedEventHandler(Comm_DataReceived);
+            ReseveHex.Checked = true;
+            SendHex.Checked = true;
+
+        }
+
+        /// <summary>
+        /// COM口数据的接收
+        /// </summary>
+        /// <param name="sender">基类</param>
+        /// <param name="e">中断事件</param>
         private void Comm_DataReceived(object sender, EventArgs e)
         {
 
-            this.usbConnect1.Invoke(new EventHandler(delegate
+            this.usbConnect3.Invoke(new EventHandler(delegate
 
             {
-                if (this.usbConnect1.ComPort.IsOpen)     //此处可能没有必要判断是否打开串口
+                if (this.usbConnect3.ComPort.IsOpen)     //此处可能没有必要判断是否打开串口
                 {  
-                    Byte[] receivedData = new Byte[this.usbConnect1.ComPort.BytesToRead];        //创建接收字节数组
-                    this.usbConnect1.ComPort.Read(receivedData, 0, receivedData.Length);         //读取数据                    
+                    Byte[] receivedData = new Byte[this.usbConnect3.ComPort.BytesToRead];        //创建接收字节数组
+                    this.usbConnect3.ComPort.Read(receivedData, 0, receivedData.Length);         //读取数据                    
 
-                    this.usbConnect1.ComPort.DiscardInBuffer();//清空SerialPort控件的Buffer
+                    this.usbConnect3.ComPort.DiscardInBuffer();//清空SerialPort控件的Buffer
 
                     if (receivedData.Length == 10)
                     {
-                        ReadMold = "Read_ID";   
+                        ReadMold = "Read_ID";
+                        Read_Mold.Text = ReadMold;
+                        Read_Mold.ForeColor = Color.Green;
                     }
                     else
                     {
                         ReadMold = "Read_BPM";
+                        Read_Mold.Text = ReadMold;
+                        Read_Mold.ForeColor = Color.Red;
                     }
-                    Read_Mold.Text = ReadMold;
+                    
                     //System.Text.Encoding.ASCII.GetString(receivedData);
                     try
                         {
@@ -68,9 +105,9 @@ namespace Upper_LCD_STM32
                                 if (ReseveStr.Checked)     //若字符串接收
                                 strRcv += d;
                                 else
-                                strRcv += Convert.ToString(d, 16); ;
+                                strRcv += " "+Convert.ToString(d, 16); ;
                         }
-                        RecieveArea.Text += strRcv;                 //显示信息
+                        RecieveArea.Text += strRcv ;                 //显示信息
                         //strRcv + "\r\n";             //显示信息
                             
                             
@@ -95,18 +132,117 @@ namespace Upper_LCD_STM32
           
             
         }
-
-
-
-
-
-
+        /// <summary>
+        /// 主窗体的加载
+        /// </summary>
+        /// <param name="sender">基类</param>
+        /// <param name="e">终端事件</param>
         private void Form1_Load(object sender, EventArgs e)
         {
            
             tabPage1.ImageIndex = 4;
             tabPage2.ImageIndex = 2;
+            TreeNode tn = new TreeNode();
+
+            tn.Text = VitualUSB.defaultPath;
+
+            getDirectories(VitualUSB.defaultPath, tn);
+
+            directoryTree.Nodes.Add(tn);
+            tn.Expand();
+
         }
+        /// <summary>
+
+
+        /// 循环遍历获得某一目录下的所有文件信息
+
+
+        /// </summary>
+
+
+        /// <param name="path">目录名</param>
+
+
+        /// <param name="tn">树节点</param>
+
+
+        public void getDirectories(string path, TreeNode tn)
+        {
+
+            try
+            {
+                string[] fileNames = Directory.GetFiles(path);
+                string[] directories = Directory.GetDirectories(path);
+                DirectoryInfo folder = new DirectoryInfo(path);
+                tn.Text = folder.Name;
+                tn.Tag = folder.FullName;
+
+                //先遍历这个目录下的文件夹
+                foreach (string dir in directories)
+                {
+
+                    TreeNode subtn = new TreeNode();
+
+                    subtn.Tag = dir;
+
+                    subtn.Text = GetShorterFileName(dir);
+
+                    getDirectories(dir, subtn);
+                    subtn.SelectedImageIndex = IconIndexes.OpenFolder; //选择节点显示图片
+                    tn.Nodes.Add(subtn);
+
+                }
+
+
+                //再遍历这个目录下的文件
+                foreach (string file in fileNames)
+                {
+
+                    TreeNode subtn = new TreeNode();
+
+                    subtn.Text = GetShorterFileName(file);
+                    subtn.Tag = file;
+                    if (file == "(*.txt)")
+                    {
+
+                        subtn.SelectedImageIndex = IconIndexes.MyFileTXT; //选择节点显示图片
+                    }
+                    else if (file == "(*.jpg)" | file == "(*.bmp)")
+                    {
+
+                        subtn.SelectedImageIndex = IconIndexes.MyFilePng;//选择节点显示图片
+                    }
+                    else
+                    {
+                        subtn.SelectedImageIndex = IconIndexes.MyDocuments;//选择节点显示图片
+                    }
+
+                    tn.Nodes.Add(subtn);
+
+                }
+
+
+            }
+            catch (Exception msg)
+            { }
+
+        }
+
+
+        /// <summary>
+                /// 滤去文件名前面的路径
+               /// </summary>
+                /// <param name="filename"></param>
+                /// <returns></returns>
+        public string GetShorterFileName(string filename)
+        {
+
+            return filename.Substring(filename.LastIndexOf("\\") + 1);
+
+        }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -127,25 +263,33 @@ namespace Upper_LCD_STM32
             for (byte i = 0;i< ID.Length; i++)
             {
                 SendID.Text +=Convert.ToString(ID[i],16);
-            }      
-            if (usbConnect1.ComPort.IsOpen)
-            {
-                this.usbConnect1.ComPort.Write(ID,0, ID.Length);
-               
             }
+            if (usbConnect3.ComPort.IsOpen)
+            {
+                this.usbConnect3.ComPort.Write(ID, 0, ID.Length);
+
+            }
+            else
+            {
+                MessageBox.Show("串口没有打开");
+            }
+
         }
 
-        private void usbConnect1_Load(object sender, EventArgs e)
+        private void usbConnect3_Load(object sender, EventArgs e)
         {
 
         }
-
-  
+        /// <summary>
+        /// 发送按钮
+        /// </summary>
+        /// <param name="sender"> </param>
+        /// <param name="e">中断事件</param>
 
         private void SendBut_Click_1(object sender, EventArgs e)
         {
             
-            if (!this.usbConnect1.ComPort.IsOpen) //如果没打开
+            if (!this.usbConnect3.ComPort.IsOpen) //如果没打开
             {
                 MessageBox.Show("请先打开串口！", "Error");
                 return;
@@ -157,56 +301,27 @@ namespace Upper_LCD_STM32
                 //处理数字转换
                 string sendBuf = strSend;
                 string sendnoNull = sendBuf.Trim();
-                string sendNOComma = sendnoNull.Replace(',', ' ');    //去掉英文逗号
-                string sendNOComma1 = sendNOComma.Replace('，', ' '); //去掉中文逗号
-                string strSendNoComma2 = sendNOComma1.Replace("0x", "");   //去掉0x
-                strSendNoComma2.Replace("0X", "");   //去掉0X
-                string[] strArray = strSendNoComma2.Split(' ');
+                string[] strArray = sendnoNull.Split(' ');
+                //string strArray = sendnoNull.Replace(" ","");
+                //strArray += "DA";
+                byte[] byteArray = new byte[strArray.Length+2];
 
-                int byteBufferLength = strArray.Length;
-                int decNum = 0;
-                // int temp = 0;
-                byte[] byteBuffer = new byte[byteBufferLength];
-                int ii = 0;
-                foreach(string str in strArray)  //对获取的字符做相加运算
+                for(int decnum = 0; decnum < strArray.Length;decnum ++)
                 {
-
-                    Byte[] bytesOfStr = Encoding.Default.GetBytes(str);
-
-
-                    try
-                    {
-                         decNum = Convert.ToInt32(str, 16); //atrArray[i] == 12时，temp == 18 
-                    }
-                    catch(ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("请输入发送的数据");
-
-                    }
-
-
-
-
-                    try    //防止输错，使其只能输入一个字节的字符
-                    {
-                        byteBuffer[ii] = Convert.ToByte(decNum);
-                        SendArea.Text += byteBuffer[ii];
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show("字节越界，请逐个字节输入！", "Error");
-                       
-                        return;
-                    }
-
-                    ii++;
+                   // byteArray[decnum] =Convert.ToByte(Convert.ToInt32(strArray[decnum], 16));
+                    SendArea.Text += strArray[decnum];
                 }
-                this.usbConnect1.ComPort.Write(byteBuffer, 0, byteBuffer.Length);
+                byteArray[strArray.Length] = 0x0d;
+                byteArray[strArray.Length + 1] = 0x0a;
+
+
+                this.usbConnect3.ComPort.Write(byteArray, 0, byteArray.Length);
+          
                  
             }
             else		//以字符串形式发送时 
             {
-                this.usbConnect1.ComPort.WriteLine(SendArea.Text);    //写入数据
+                this.usbConnect3.ComPort.WriteLine(SendArea.Text);    //写入数据
             }
 
         }
@@ -237,12 +352,7 @@ namespace Upper_LCD_STM32
             choosePath.textBox1.Text = VitualUSB.defaultPath;
             
             choosePath.ShowDialog();
-           
-           
-           
-            
-            
-            
+                  
 
         }
 
@@ -315,21 +425,104 @@ namespace Upper_LCD_STM32
 
         }
 
-        private void viewFile3_Load(object sender, EventArgs e)
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string refPath = Win32API.INIGetStringValue(VitualUSB.path1 + "INI.ini", "INI", "defaultPath", null);
+            directoryTree.Nodes.Clear();
+            TreeNode tn = new TreeNode();
+
+            tn.Text = refPath;
+
+            getDirectories(refPath, tn);
+
+            directoryTree.Nodes.Add(tn);
+            tn.Expand();
+        }
+
+        private void directoryTree_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            timer1.Enabled = true;
+            FilePathBox.Text = Convert.ToString(e.Node.Tag);
+           //ScriptEngine pyEngine = Python.CreateEngine();//创建Python解释器对象
+           //dynamic py = pyEngine.ExecuteFile(@"OpenPng.py");//读取脚本文件
+            SendArea.Clear();
+            try
+            {
+                using (FileStream fs = new FileStream(FilePathBox.Text, FileMode.Open, FileAccess.Read)) //图片数据流
+                {
+                    System.Drawing.Image image = System.Drawing.Image.FromStream(fs);
+                    width = image.Width;
+                    height = image.Height;
+                    PicL.Text = width.ToString();
+                    PicW.Text = height.ToString();
+
+                }
+            }
+            catch
+            {
+
+            }
+
+
+
+            try
+            {
+                pictureBox1.Image = Image.FromFile(FilePathBox.Text);
+            }
+            catch
+            {
+                pictureBox1.Image = pictureBox1.ErrorImage;
+            }
+
+        }
+
+        private void ReciveID_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (SendArea.Text != ViewFile.data)
+            int x = 0;
+            int y = 0;
+            timer1.Enabled = false;
+            using (Bitmap bmp = new Bitmap(FilePathBox.Text))
             {
-                SendArea.Text = ViewFile.data;
+                
+                if (y< height)
+                { 
+                    for (x = 0; x < width; x++)
+                    {
+                        Color pixelColor = bmp.GetPixel(x, y);
+                        //颜色的 RED 分量值
+                        red = pixelColor.R;
+                        //颜色的 GREEN 分量值
+                        green = pixelColor.G;
+                        //颜色的 BLUE 分量值
+                        blue = pixelColor.B;
+                        BytesRGB[3*x] =Convert.ToByte(red);
+                        BytesRGB[3 * x+1] = Convert.ToByte(green); 
+                        BytesRGB[3 * x+2] = Convert.ToByte(blue); 
+
+                        
+                        SendArea.Text +=  red.ToString("X2") + " "+ green.ToString("X2") +" "+blue.ToString("X2") + " " ;
+
+                    }
+                    y += 1;
+                    BytesRGB[3 * x + 3] = 0x0D;
+                    BytesRGB[3 * x + 4] = 0x0A;
+                    usbConnect3.ComPort.Write(BytesRGB, 0, 3 * x + 5);
+                    SendArea.Text += "\n";
+                   
+                }
+               
+                   
+                }
 
             }
-                
         }
-    }
+    
     }
 
     

@@ -63,19 +63,27 @@
             this.SendArea = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.usbConnect3 = new MyDll.USBConnect();
-            this.viewFile3 = new MyDll.ViewFile();
-            this.viewFile1 = new MyDll.ViewFile();
+            this.dialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.directoryTree = new System.Windows.Forms.TreeView();
+            this.directoryIcons = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.FilePathBox = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.usbConnect1 = new MyDll.USBConnect();
             this.usbConnect2 = new MyDll.USBConnect();
-            this.viewFile2 = new MyDll.ViewFile();
+            this.usbConnect3 = new MyDll.USBConnect();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.PicL = new System.Windows.Forms.TextBox();
+            this.PicW = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -101,6 +109,7 @@
             this.ReciveID.Name = "ReciveID";
             this.ReciveID.Size = new System.Drawing.Size(215, 25);
             this.ReciveID.TabIndex = 11;
+            this.ReciveID.TextChanged += new System.EventHandler(this.ReciveID_TextChanged);
             // 
             // menuStrip1
             // 
@@ -285,7 +294,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(602, 617);
+            this.button3.Location = new System.Drawing.Point(612, 659);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 29);
@@ -356,7 +365,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(649, 408);
+            this.tabPage2.Size = new System.Drawing.Size(649, 440);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "接收数据区";
             // 
@@ -366,7 +375,8 @@
             this.RecieveArea.Location = new System.Drawing.Point(-2, -4);
             this.RecieveArea.Multiline = true;
             this.RecieveArea.Name = "RecieveArea";
-            this.RecieveArea.Size = new System.Drawing.Size(649, 410);
+            this.RecieveArea.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.RecieveArea.Size = new System.Drawing.Size(649, 442);
             this.RecieveArea.TabIndex = 1;
             // 
             // tabPage1
@@ -379,7 +389,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(649, 408);
+            this.tabPage1.Size = new System.Drawing.Size(649, 440);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "发送数据区";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
@@ -390,7 +400,8 @@
             this.SendArea.Location = new System.Drawing.Point(-2, 0);
             this.SendArea.Multiline = true;
             this.SendArea.Name = "SendArea";
-            this.SendArea.Size = new System.Drawing.Size(649, 410);
+            this.SendArea.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.SendArea.Size = new System.Drawing.Size(649, 435);
             this.SendArea.TabIndex = 0;
             this.SendArea.TextChanged += new System.EventHandler(this.SendArea_TextChanged_1);
             // 
@@ -404,7 +415,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(657, 437);
+            this.tabControl1.Size = new System.Drawing.Size(657, 469);
             this.tabControl1.TabIndex = 27;
             // 
             // imageList1
@@ -419,6 +430,71 @@
             this.imageList1.Images.SetKeyName(5, "6.png");
             this.imageList1.Images.SetKeyName(6, "360截图18430701415560.png");
             // 
+            // directoryTree
+            // 
+            this.directoryTree.ImageIndex = 0;
+            this.directoryTree.ImageList = this.directoryIcons;
+            this.directoryTree.Location = new System.Drawing.Point(17, 245);
+            this.directoryTree.Name = "directoryTree";
+            this.directoryTree.SelectedImageIndex = 0;
+            this.directoryTree.Size = new System.Drawing.Size(273, 134);
+            this.directoryTree.StateImageList = this.directoryIcons;
+            this.directoryTree.TabIndex = 33;
+            this.directoryTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.directoryTree_AfterSelect);
+            // 
+            // directoryIcons
+            // 
+            this.directoryIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("directoryIcons.ImageStream")));
+            this.directoryIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.directoryIcons.Images.SetKeyName(0, "favicon-20181227073740130.ico");
+            this.directoryIcons.Images.SetKeyName(1, "favicon-20181227073740630.ico");
+            this.directoryIcons.Images.SetKeyName(2, "cf21ae978489c2bf6c984f91a543958.png");
+            this.directoryIcons.Images.SetKeyName(3, "2399eecfc7d95fcbb2d8776ccd529ae.png");
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(17, 487);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(275, 145);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "";
+            // 
+            // FilePathBox
+            // 
+            this.FilePathBox.Location = new System.Drawing.Point(16, 415);
+            this.FilePathBox.Multiline = true;
+            this.FilePathBox.Name = "FilePathBox";
+            this.FilePathBox.Size = new System.Drawing.Size(274, 60);
+            this.FilePathBox.TabIndex = 35;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(105, 385);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 26);
+            this.button4.TabIndex = 34;
+            this.button4.Text = "刷新";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // usbConnect1
+            // 
+            this.usbConnect1.Location = new System.Drawing.Point(0, 0);
+            this.usbConnect1.Margin = new System.Windows.Forms.Padding(4);
+            this.usbConnect1.Name = "usbConnect1";
+            this.usbConnect1.Size = new System.Drawing.Size(280, 168);
+            this.usbConnect1.TabIndex = 0;
+            // 
+            // usbConnect2
+            // 
+            this.usbConnect2.Location = new System.Drawing.Point(0, 0);
+            this.usbConnect2.Margin = new System.Windows.Forms.Padding(4);
+            this.usbConnect2.Name = "usbConnect2";
+            this.usbConnect2.Size = new System.Drawing.Size(280, 168);
+            this.usbConnect2.TabIndex = 0;
+            // 
             // usbConnect3
             // 
             this.usbConnect3.Location = new System.Drawing.Point(13, 33);
@@ -427,48 +503,44 @@
             this.usbConnect3.Size = new System.Drawing.Size(279, 166);
             this.usbConnect3.TabIndex = 25;
             // 
-            // viewFile3
-            // 
-            this.viewFile3.Location = new System.Drawing.Point(0, 223);
-            this.viewFile3.Name = "viewFile3";
-            this.viewFile3.Size = new System.Drawing.Size(311, 409);
-            this.viewFile3.TabIndex = 26;
-            this.viewFile3.Load += new System.EventHandler(this.viewFile3_Load);
-            // 
-            // viewFile1
-            // 
-            this.viewFile1.Location = new System.Drawing.Point(0, 211);
-            this.viewFile1.Name = "viewFile1";
-            this.viewFile1.Size = new System.Drawing.Size(289, 202);
-            this.viewFile1.TabIndex = 23;
-            this.viewFile1.Load += new System.EventHandler(this.viewFile1_Load);
-            // 
-            // usbConnect1
-            // 
-            this.usbConnect1.Location = new System.Drawing.Point(16, 35);
-            this.usbConnect1.Margin = new System.Windows.Forms.Padding(5);
-            this.usbConnect1.Name = "usbConnect1";
-            this.usbConnect1.Size = new System.Drawing.Size(267, 168);
-            this.usbConnect1.TabIndex = 21;
-            // 
-            // usbConnect2
-            // 
-            this.usbConnect2.Location = new System.Drawing.Point(31, 32);
-            this.usbConnect2.Margin = new System.Windows.Forms.Padding(4);
-            this.usbConnect2.Name = "usbConnect2";
-            this.usbConnect2.Size = new System.Drawing.Size(280, 168);
-            this.usbConnect2.TabIndex = 25;
-            // 
-            // viewFile2
-            // 
-            this.viewFile2.Location = new System.Drawing.Point(16, 226);
-            this.viewFile2.Name = "viewFile2";
-            this.viewFile2.Size = new System.Drawing.Size(299, 212);
-            this.viewFile2.TabIndex = 26;
-            // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // PicL
+            // 
+            this.PicL.Location = new System.Drawing.Point(547, 129);
+            this.PicL.Margin = new System.Windows.Forms.Padding(4);
+            this.PicL.Name = "PicL";
+            this.PicL.Size = new System.Drawing.Size(65, 25);
+            this.PicL.TabIndex = 37;
+            // 
+            // PicW
+            // 
+            this.PicW.Location = new System.Drawing.Point(751, 129);
+            this.PicW.Margin = new System.Windows.Forms.Padding(4);
+            this.PicW.Name = "PicW";
+            this.PicW.Size = new System.Drawing.Size(60, 25);
+            this.PicW.TabIndex = 38;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(465, 139);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 15);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "图片长度:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(669, 139);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 15);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "图片宽度:";
             // 
             // Form1
             // 
@@ -477,6 +549,14 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1021, 780);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.PicW);
+            this.Controls.Add(this.PicL);
+            this.Controls.Add(this.directoryTree);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.FilePathBox);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.statusStrip1);
@@ -496,7 +576,6 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.viewFile3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -521,6 +600,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -551,12 +631,9 @@
         private System.Windows.Forms.Label Read_Mold;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private MyDll.ViewFile viewFile1;
+ 
         private System.Windows.Forms.Label label4;
         private MyDll.USBConnect usbConnect2;
-        private MyDll.ViewFile viewFile2;
-        private MyDll.USBConnect usbConnect3;
-        private MyDll.ViewFile viewFile3;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -566,7 +643,18 @@
         private System.Windows.Forms.TextBox SendArea;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.FolderBrowserDialog dialog;
+        private System.Windows.Forms.TreeView directoryTree;
+        private System.Windows.Forms.ImageList directoryIcons;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.TextBox FilePathBox;
+        private System.Windows.Forms.Button button4;
+        private MyDll.USBConnect usbConnect3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox PicL;
+        private System.Windows.Forms.TextBox PicW;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
 

@@ -2,7 +2,7 @@
 .\objects\showbpm.o: LCD\ShowBPM.h
 .\objects\showbpm.o: .\USER\stm32f10x.h
 .\objects\showbpm.o: .\CMSIS\core_cm3.h
-.\objects\showbpm.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\showbpm.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\showbpm.o: .\CMSIS\system_stm32f10x.h
 .\objects\showbpm.o: .\USER\stm32f10x_conf.h
 .\objects\showbpm.o: .\FWlib\inc\stm32f10x_adc.h
@@ -30,5 +30,5 @@
 .\objects\showbpm.o: .\FWlib\inc\stm32f10x_wwdg.h
 .\objects\showbpm.o: .\FWlib\inc\misc.h
 .\objects\showbpm.o: .\SYSTEM\usart\usart.h
-.\objects\showbpm.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\showbpm.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\showbpm.o: .\SYSTEM\sys\sys.h

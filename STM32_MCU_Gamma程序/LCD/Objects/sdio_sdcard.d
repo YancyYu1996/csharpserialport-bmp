@@ -2,7 +2,7 @@
 .\objects\sdio_sdcard.o: SYSTEM\sdio\sdio_sdcard.h
 .\objects\sdio_sdcard.o: .\USER\stm32f10x.h
 .\objects\sdio_sdcard.o: .\CMSIS\core_cm3.h
-.\objects\sdio_sdcard.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sdio_sdcard.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sdio_sdcard.o: .\CMSIS\system_stm32f10x.h
 .\objects\sdio_sdcard.o: .\USER\stm32f10x_conf.h
 .\objects\sdio_sdcard.o: .\FWlib\inc\stm32f10x_adc.h
@@ -29,7 +29,7 @@
 .\objects\sdio_sdcard.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\sdio_sdcard.o: .\FWlib\inc\stm32f10x_wwdg.h
 .\objects\sdio_sdcard.o: .\FWlib\inc\misc.h
-.\objects\sdio_sdcard.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\string.h
+.\objects\sdio_sdcard.o: D:\kiel5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\sdio_sdcard.o: .\SYSTEM\sys\sys.h
 .\objects\sdio_sdcard.o: .\SYSTEM\usart\usart.h
-.\objects\sdio_sdcard.o: E:\kiel5\keil5\ARM\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sdio_sdcard.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdio.h
