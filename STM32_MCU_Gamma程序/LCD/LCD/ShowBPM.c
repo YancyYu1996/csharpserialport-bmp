@@ -1,12 +1,14 @@
 #include "ShowBPM.h"
-#include "usart.h"
 
-void Send_Bpm(u8* USART_RX_BUF,int len)
+#include "lcd.h"
+static int i=0;
+void Send_Bpm(unsigned char* pack)
 {
-	  int i;
-		for(i = 0;i<len;i++)
-		{
-			printf("%X",USART_RX_BUF[i]);
-		}
+	
+	
+	   
+			LCD_DataWrite((pack[0]>>2)&0xFF);
+      LCD_DataWrite((pack[1]>>2)&0xFF);
+      LCD_DataWrite((pack[2]>>2)&0xFF);
 
 }

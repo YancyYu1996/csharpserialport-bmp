@@ -2,7 +2,7 @@
 #define	__ShowBPM_H
 
 #include "stm32f10x.h"
-void Send_Bpm(u8* USART_RX_BUF,int len);
+void Send_Bpm(unsigned char* pack);
 
 
 #endif /* __LED_H */

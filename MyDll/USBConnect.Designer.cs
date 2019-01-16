@@ -136,6 +136,8 @@
             // ComPort
             // 
             this.ComPort.BaudRate = 19200;
+            this.ComPort.ReadBufferSize = 65536;
+            this.ComPort.WriteBufferSize = 65536;
             // 
             // USBConnect
             // 

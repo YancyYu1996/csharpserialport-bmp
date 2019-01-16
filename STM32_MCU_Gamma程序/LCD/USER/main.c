@@ -11,8 +11,8 @@
 #include <stdio.h>
 #include "main.h"
 #include "ShowBPM.h"
-unsigned char Packet[11]={0};
-
+unsigned char Packet[30]={0};
+static int number = 0; 
 int main(void)
 {
 	u16 i=0,j=0,t=0;  
@@ -23,7 +23,7 @@ int main(void)
 	RCC_Configuration();
 	delay_init();
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	uart_init(19200);
+	uart_init(115200);
 	GPIO_Configuration();
 	MCU_DIR_Write;
 	RGB_DIR_Write;
@@ -33,7 +33,8 @@ int main(void)
 	
 	LCD_RST();
 	LCD_Init();
-  USART_SendData(USART1, 21);//向串口1发送数据
+	BlockWrite(0,LCD_WIDTH-1,0,LCD_HEIGHT-1);
+
 	 	while(1)
 	{
 		
@@ -41,10 +42,20 @@ int main(void)
 		if(USART_RX_STA&0x8000)
 		{					   
 			len=USART_RX_STA&0x3fff;//得到此次接收到的数据长度
+			
+			for(t=0;t<len;t++)
+			{
+				USART_SendData(USART1, USART_RX_BUF[t]);//向串口1发送数据
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+			}
+				USART_RX_STA=0;
+		
+		
 			//Send_Bpm(USART_RX_BUF,len);
 				
 			for(i=0,t=0;t<len;)
 			{
+				
 				if((0x2F<USART_RX_BUF[t])&&(USART_RX_BUF[t]<0x3A))//判断0~9
 				{
 					tmp1=USART_RX_BUF[t]-0x30;
@@ -78,110 +89,82 @@ int main(void)
 				
 
 			}
+			/**********png************/
 			
-			for(t=0;t<len;t++)
-			{
-				USART_SendData(USART1, USART_RX_BUF[t]);//向串口1发送数据
-				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
-			}
+			Send_Bpm(Packet);
+			number += 1;
 			
-			USART_RX_STA=0;
-			
-			switch(Packet[1])
-		{
-		   case 0:		                    
-			   for(j=0;j<Packet[2];j++) 
-			    {
-						LCD_DataWrite(Packet[3+j]);
-					} 
-			   break;
-	
-		   case 1:			                  //?á??′???E
-				 switch(Packet[3])
-				 {
-				  case 1:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();MCU_DIR_Write;break;
-				  case 2:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();Packet[2]=LCD_DataRead();Packet[3]=LCD_DataRead();MCU_DIR_Write;break;
-				  case 3:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();Packet[2]=LCD_DataRead();Packet[3]=LCD_DataRead();Packet[4]=LCD_DataRead();MCU_DIR_Write;break;
-				  case 4:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();Packet[2]=LCD_DataRead();Packet[3]=LCD_DataRead();Packet[4]=LCD_DataRead();Packet[5]=LCD_DataRead();MCU_DIR_Write;break;
-				  default:break;
-				 }
-		       break;
-			   								
-		   case 2: 							   //?èD′μ??·￡??ùD′êy?Y	,just for Gamma
-					LCD_CtrlWrite(Packet[2]);	
-				 for(j=0;j<Packet[3];j++) 
-				 {
-				   LCD_DataWrite(Packet[4+j]);
-				 } 
-			   break;
-	
-		   case 3: 							   //?￠?ò?×
-				 if(Packet[2]==0x40)		   //64
-					{	 
-						DispColor(Packet[3]);
-				  }
-				 if(Packet[2]==0x20)			//32
-					{	 
-					  DispColor(Packet[3]*2);
-					}
+//			switch(Packet[1])
+//		{
+//		   case 0:		                    
+//			   for(j=0;j<Packet[2];j++) 
+//			    {
+//						LCD_DataWrite(Packet[3+j]);
+//					} 
+//			   break;
+//	
+//		   case 1:			                  //?á??′???E
+//				 switch(Packet[3])
+//				 {
+//				  case 1:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();MCU_DIR_Write;break;
+//				  case 2:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();Packet[2]=LCD_DataRead();Packet[3]=LCD_DataRead();MCU_DIR_Write;break;
+//				  case 3:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();Packet[2]=LCD_DataRead();Packet[3]=LCD_DataRead();Packet[4]=LCD_DataRead();MCU_DIR_Write;break;
+//				  case 4:LCD_CtrlWrite(Packet[2]);MCU_DIR_Read;Packet[2]=LCD_DataRead();Packet[2]=LCD_DataRead();Packet[3]=LCD_DataRead();Packet[4]=LCD_DataRead();Packet[5]=LCD_DataRead();MCU_DIR_Write;break;
+//				  default:break;
+//				 }
+//		       break;
+//			   								
+//		   case 2: 							   //?èD′μ??·￡??ùD′êy?Y	,just for Gamma
+//					LCD_CtrlWrite(Packet[2]);	
+//				 for(j=0;j<Packet[3];j++) 
+//				 {
+//				   LCD_DataWrite(Packet[4+j]);
+//				 } 
+//			   break;
+//	
+//		   case 3: 							   //?￠?ò?×
+//				 if(Packet[2]==0x40)		   //64
+//					{	 
+//						DispColor(Packet[3]);
+//				  }
+//				 if(Packet[2]==0x20)			//32
+//					{	 
+//					  DispColor(Packet[3]*2);
+//					}
 
-				 break;
-	
-		 case 4: 	
-			 	  if( Packet[2]==0x40)
-				  {
-				   	 DispFlick(Packet[3]);
-				   }
-				  if( Packet[2]==0x20)
-				  {
-				     DispFlick(Packet[3]*2);
-				   }
-			  
-			 break;
+//				 break;
+//	
+//		 case 4: 	
+//			 	  if( Packet[2]==0x40)
+//				  {
+//				   	 DispFlick(Packet[3]);
+//				   }
+//				  if( Packet[2]==0x20)
+//				  {
+//				     DispFlick(Packet[3]*2);
+//				   }
+//			  
+//			 break;
 
-		case 5: 							   //for others but not Gamma
-				LCD_CtrlWrite(Packet[2]);	
-				 for(j=0;j<Packet[3];j++) 
-				 {
-				   LCD_DataWrite(Packet[4+j]);
-				 } 
-			   break;
-	
-	  default: break;
-		}
+//		case 5: 							   //for others but not Gamma
+//				LCD_CtrlWrite(Packet[2]);	
+//				 for(j=0;j<Packet[3];j++) 
+//				 {
+//				   LCD_DataWrite(Packet[4+j]);
+//				 } 
+//			   break;
+//	
+//	  default: break;
+//		}
 	}
 		
 			
-		}
 
 
-	
-	
-//	while(1)
-//	{
-////		sd_showbmp("1.bmp");
-////		delay_ms(1000);
-////		sd_showbmp("2.bmp");
-////		delay_ms(1000);
-////		sd_showbmp("3.bmp");
-////		delay_ms(1000);
-////		sd_showbmp("4.bmp");
-//		delay_ms(1000);
-//		DispColor(0xFF0000);
-//		delay_ms(1000);
-//		DispColor(0xFF00);
-//		delay_ms(1000);
-//		DispColor(0xFF);
-//		delay_ms(1000);
-//	}
-	
 }
 
 
-
-
-
-
+}
 
 
 

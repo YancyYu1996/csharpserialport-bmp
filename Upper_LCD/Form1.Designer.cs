@@ -39,21 +39,22 @@
             this.保存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.默认路径ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.默认发送格式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SendMode = new System.Windows.Forms.ToolStripComboBox();
+            this.默认接收格式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RecMode = new System.Windows.Forms.ToolStripComboBox();
+            this.定时器默认时间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TickTime = new System.Windows.Forms.ToolStripTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.ReseveStr = new System.Windows.Forms.RadioButton();
-            this.ReseveHex = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.SendHex = new System.Windows.Forms.RadioButton();
-            this.SendStr = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
             this.Read_Mold = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -69,17 +70,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.FilePathBox = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.usbConnect1 = new MyDll.USBConnect();
-            this.usbConnect2 = new MyDll.USBConnect();
-            this.usbConnect3 = new MyDll.USBConnect();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PicL = new System.Windows.Forms.TextBox();
             this.PicW = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lenth = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.usbConnect3 = new MyDll.USBConnect();
+            this.usbConnect1 = new MyDll.USBConnect();
+            this.usbConnect2 = new MyDll.USBConnect();
             this.menuStrip1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -91,7 +94,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(743, 6);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(234, 25);
+            this.dateTimePicker1.Size = new System.Drawing.Size(165, 25);
             this.dateTimePicker1.TabIndex = 6;
             // 
             // SendID
@@ -109,7 +112,6 @@
             this.ReciveID.Name = "ReciveID";
             this.ReciveID.Size = new System.Drawing.Size(215, 25);
             this.ReciveID.TabIndex = 11;
-            this.ReciveID.TextChanged += new System.EventHandler(this.ReciveID_TextChanged);
             // 
             // menuStrip1
             // 
@@ -124,7 +126,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1021, 28);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // 新建ToolStripMenuItem
             // 
@@ -153,7 +154,10 @@
             // 设置ToolStripMenuItem
             // 
             this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.默认路径ToolStripMenuItem});
+            this.默认路径ToolStripMenuItem,
+            this.默认发送格式ToolStripMenuItem,
+            this.默认接收格式ToolStripMenuItem,
+            this.定时器默认时间ToolStripMenuItem});
             this.设置ToolStripMenuItem.Image = global::Upper_LCD.Properties.Resources._360截图18430701415560;
             this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
             this.设置ToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
@@ -163,9 +167,49 @@
             // 
             this.默认路径ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("默认路径ToolStripMenuItem.Image")));
             this.默认路径ToolStripMenuItem.Name = "默认路径ToolStripMenuItem";
-            this.默认路径ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.默认路径ToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.默认路径ToolStripMenuItem.Text = "默认路径";
             this.默认路径ToolStripMenuItem.Click += new System.EventHandler(this.默认路径ToolStripMenuItem_Click);
+            // 
+            // 默认发送格式ToolStripMenuItem
+            // 
+            this.默认发送格式ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SendMode});
+            this.默认发送格式ToolStripMenuItem.Name = "默认发送格式ToolStripMenuItem";
+            this.默认发送格式ToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.默认发送格式ToolStripMenuItem.Text = "默认发送格式";
+            this.默认发送格式ToolStripMenuItem.Click += new System.EventHandler(this.默认发送格式ToolStripMenuItem_Click);
+            // 
+            // SendMode
+            // 
+            this.SendMode.Name = "SendMode";
+            this.SendMode.Size = new System.Drawing.Size(121, 28);
+            // 
+            // 默认接收格式ToolStripMenuItem
+            // 
+            this.默认接收格式ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RecMode});
+            this.默认接收格式ToolStripMenuItem.Name = "默认接收格式ToolStripMenuItem";
+            this.默认接收格式ToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.默认接收格式ToolStripMenuItem.Text = "默认接收格式";
+            // 
+            // RecMode
+            // 
+            this.RecMode.Name = "RecMode";
+            this.RecMode.Size = new System.Drawing.Size(121, 28);
+            // 
+            // 定时器默认时间ToolStripMenuItem
+            // 
+            this.定时器默认时间ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TickTime});
+            this.定时器默认时间ToolStripMenuItem.Name = "定时器默认时间ToolStripMenuItem";
+            this.定时器默认时间ToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.定时器默认时间ToolStripMenuItem.Text = "定时器默认时间";
+            // 
+            // TickTime
+            // 
+            this.TickTime.Name = "TickTime";
+            this.TickTime.Size = new System.Drawing.Size(100, 27);
             // 
             // label1
             // 
@@ -196,85 +240,9 @@
             this.label3.Size = new System.Drawing.Size(0, 15);
             this.label3.TabIndex = 15;
             // 
-            // ReseveStr
-            // 
-            this.ReseveStr.AutoSize = true;
-            this.ReseveStr.Location = new System.Drawing.Point(8, 20);
-            this.ReseveStr.Margin = new System.Windows.Forms.Padding(4);
-            this.ReseveStr.Name = "ReseveStr";
-            this.ReseveStr.Size = new System.Drawing.Size(73, 19);
-            this.ReseveStr.TabIndex = 16;
-            this.ReseveStr.TabStop = true;
-            this.ReseveStr.Text = "字符串";
-            this.ReseveStr.UseVisualStyleBackColor = true;
-            // 
-            // ReseveHex
-            // 
-            this.ReseveHex.AutoSize = true;
-            this.ReseveHex.Location = new System.Drawing.Point(89, 20);
-            this.ReseveHex.Margin = new System.Windows.Forms.Padding(4);
-            this.ReseveHex.Name = "ReseveHex";
-            this.ReseveHex.Size = new System.Drawing.Size(88, 19);
-            this.ReseveHex.TabIndex = 17;
-            this.ReseveHex.TabStop = true;
-            this.ReseveHex.Text = "十六进制";
-            this.ReseveHex.UseVisualStyleBackColor = true;
-            this.ReseveHex.CheckedChanged += new System.EventHandler(this.ReseveHex_CheckedChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.ReseveHex);
-            this.groupBox3.Controls.Add(this.ReseveStr);
-            this.groupBox3.Location = new System.Drawing.Point(16, 639);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(186, 47);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "接收数据格式";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.SendHex);
-            this.groupBox4.Controls.Add(this.SendStr);
-            this.groupBox4.Location = new System.Drawing.Point(16, 685);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(186, 46);
-            this.groupBox4.TabIndex = 20;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "发送数据格式";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
-            // 
-            // SendHex
-            // 
-            this.SendHex.AutoSize = true;
-            this.SendHex.Location = new System.Drawing.Point(89, 21);
-            this.SendHex.Margin = new System.Windows.Forms.Padding(4);
-            this.SendHex.Name = "SendHex";
-            this.SendHex.Size = new System.Drawing.Size(88, 19);
-            this.SendHex.TabIndex = 17;
-            this.SendHex.TabStop = true;
-            this.SendHex.Text = "十六进制";
-            this.SendHex.UseVisualStyleBackColor = true;
-            // 
-            // SendStr
-            // 
-            this.SendStr.AutoSize = true;
-            this.SendStr.Location = new System.Drawing.Point(8, 19);
-            this.SendStr.Margin = new System.Windows.Forms.Padding(4);
-            this.SendStr.Name = "SendStr";
-            this.SendStr.Size = new System.Drawing.Size(73, 19);
-            this.SendStr.TabIndex = 16;
-            this.SendStr.TabStop = true;
-            this.SendStr.Text = "字符串";
-            this.SendStr.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(227, 649);
+            this.button2.Location = new System.Drawing.Point(788, 659);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 29);
@@ -315,12 +283,20 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 758);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 650);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(1021, 22);
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.statusStrip1.Size = new System.Drawing.Size(1021, 25);
             this.statusStrip1.TabIndex = 28;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 20);
+            this.toolStripStatusLabel1.Text = "发送图片->stm32";
             // 
             // label5
             // 
@@ -392,7 +368,6 @@
             this.tabPage1.Size = new System.Drawing.Size(649, 440);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "发送数据区";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // SendArea
             // 
@@ -403,7 +378,6 @@
             this.SendArea.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.SendArea.Size = new System.Drawing.Size(649, 435);
             this.SendArea.TabIndex = 0;
-            this.SendArea.TextChanged += new System.EventHandler(this.SendArea_TextChanged_1);
             // 
             // tabControl1
             // 
@@ -455,7 +429,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(17, 487);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(275, 145);
+            this.pictureBox1.Size = new System.Drawing.Size(275, 155);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
@@ -478,30 +452,6 @@
             this.button4.Text = "刷新";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // usbConnect1
-            // 
-            this.usbConnect1.Location = new System.Drawing.Point(0, 0);
-            this.usbConnect1.Margin = new System.Windows.Forms.Padding(4);
-            this.usbConnect1.Name = "usbConnect1";
-            this.usbConnect1.Size = new System.Drawing.Size(280, 168);
-            this.usbConnect1.TabIndex = 0;
-            // 
-            // usbConnect2
-            // 
-            this.usbConnect2.Location = new System.Drawing.Point(0, 0);
-            this.usbConnect2.Margin = new System.Windows.Forms.Padding(4);
-            this.usbConnect2.Name = "usbConnect2";
-            this.usbConnect2.Size = new System.Drawing.Size(280, 168);
-            this.usbConnect2.TabIndex = 0;
-            // 
-            // usbConnect3
-            // 
-            this.usbConnect3.Location = new System.Drawing.Point(13, 33);
-            this.usbConnect3.Margin = new System.Windows.Forms.Padding(4);
-            this.usbConnect3.Name = "usbConnect3";
-            this.usbConnect3.Size = new System.Drawing.Size(279, 166);
-            this.usbConnect3.TabIndex = 25;
             // 
             // timer1
             // 
@@ -542,13 +492,65 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "图片宽度:";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(749, 62);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(105, 15);
+            this.label9.TabIndex = 42;
+            this.label9.Text = "发送数据长度:";
+            // 
+            // lenth
+            // 
+            this.lenth.Location = new System.Drawing.Point(861, 52);
+            this.lenth.Margin = new System.Windows.Forms.Padding(4);
+            this.lenth.Name = "lenth";
+            this.lenth.Size = new System.Drawing.Size(65, 25);
+            this.lenth.TabIndex = 41;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(190, 729);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 13);
+            this.progressBar1.TabIndex = 43;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // usbConnect3
+            // 
+            this.usbConnect3.Location = new System.Drawing.Point(13, 33);
+            this.usbConnect3.Margin = new System.Windows.Forms.Padding(4);
+            this.usbConnect3.Name = "usbConnect3";
+            this.usbConnect3.Size = new System.Drawing.Size(279, 166);
+            this.usbConnect3.TabIndex = 25;
+            // 
+            // usbConnect1
+            // 
+            this.usbConnect1.Location = new System.Drawing.Point(0, 0);
+            this.usbConnect1.Margin = new System.Windows.Forms.Padding(4);
+            this.usbConnect1.Name = "usbConnect1";
+            this.usbConnect1.Size = new System.Drawing.Size(280, 168);
+            this.usbConnect1.TabIndex = 0;
+            // 
+            // usbConnect2
+            // 
+            this.usbConnect2.Location = new System.Drawing.Point(0, 0);
+            this.usbConnect2.Margin = new System.Windows.Forms.Padding(4);
+            this.usbConnect2.Name = "usbConnect2";
+            this.usbConnect2.Size = new System.Drawing.Size(280, 168);
+            this.usbConnect2.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1021, 780);
+            this.ClientSize = new System.Drawing.Size(1021, 675);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lenth);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.PicW);
@@ -566,7 +568,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Read_Mold);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -574,7 +575,6 @@
             this.Controls.Add(this.SendID);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
@@ -591,10 +591,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -620,12 +618,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton ReseveStr;
-        private System.Windows.Forms.RadioButton ReseveHex;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton SendHex;
-        private System.Windows.Forms.RadioButton SendStr;
         private System.Windows.Forms.Button button2;
         private MyDll.USBConnect usbConnect1;
         private System.Windows.Forms.Label Read_Mold;
@@ -655,6 +647,16 @@
         private System.Windows.Forms.TextBox PicW;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox lenth;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolStripMenuItem 默认发送格式ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox SendMode;
+        private System.Windows.Forms.ToolStripMenuItem 默认接收格式ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox RecMode;
+        private System.Windows.Forms.ToolStripMenuItem 定时器默认时间ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox TickTime;
     }
 }
 

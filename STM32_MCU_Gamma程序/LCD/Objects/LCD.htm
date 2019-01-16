@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\LCD.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\LCD.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Jan 07 15:22:17 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Jan 08 18:16:50 2019
 <BR><P>
 <H3>Maximum Stack Usage =        112 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -98,7 +98,7 @@ Global Symbols
 <P><STRONG><a name="[48]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
-<P><STRONG><a name="[85]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[84]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[49]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -108,15 +108,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[86]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[85]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[87]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[86]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[88]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[87]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[89]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[88]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[8a]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[89]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
@@ -305,13 +305,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[8b]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[8a]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[55]"></a>BlockWrite</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, lcd.o(i.BlockWrite))
+<P><STRONG><a name="[7e]"></a>BlockWrite</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, lcd.o(i.BlockWrite))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = BlockWrite
 </UL>
-<BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispFlick
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispColor
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.BusFault_Handler))
@@ -323,7 +322,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetFlagStatus
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
 </UL>
 
 <P><STRONG><a name="[4f]"></a>CmdResp1Error</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, sdio_sdcard.o(i.CmdResp1Error))
@@ -332,11 +331,11 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetFlagStatus
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SelectDeselect
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SelectDeselect
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
 </UL>
 
 <P><STRONG><a name="[50]"></a>CmdResp2Error</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, sdio_sdcard.o(i.CmdResp2Error))
@@ -345,7 +344,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetFlagStatus
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
 </UL>
 
 <P><STRONG><a name="[51]"></a>CmdResp3Error</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, sdio_sdcard.o(i.CmdResp3Error))
@@ -354,7 +353,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetFlagStatus
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
 </UL>
 
 <P><STRONG><a name="[52]"></a>CmdResp6Error</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, sdio_sdcard.o(i.CmdResp6Error))
@@ -363,7 +362,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetFlagStatus
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
 </UL>
 
 <P><STRONG><a name="[53]"></a>CmdResp7Error</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, sdio_sdcard.o(i.CmdResp7Error))
@@ -371,85 +370,69 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
 </UL>
 
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[54]"></a>DispColor</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, lcd.o(i.DispColor))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = DispColor &rArr; BlockWrite
-</UL>
-<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlockWrite
-</UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[56]"></a>DispFlick</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, lcd.o(i.DispFlick))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = DispFlick &rArr; BlockWrite
-</UL>
-<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlockWrite
-</UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[57]"></a>FSMC_LCD_Init</STRONG> (Thumb, 84 bytes, Stack size 96 bytes, lcd.o(i.FSMC_LCD_Init))
+<P><STRONG><a name="[54]"></a>FSMC_LCD_Init</STRONG> (Thumb, 84 bytes, Stack size 96 bytes, lcd.o(i.FSMC_LCD_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = FSMC_LCD_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_NORSRAMInit
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_NORSRAMCmd
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_NORSRAMInit
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_NORSRAMCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[59]"></a>FSMC_NORSRAMCmd</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, stm32f10x_fsmc.o(i.FSMC_NORSRAMCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_LCD_Init
+<P><STRONG><a name="[56]"></a>FSMC_NORSRAMCmd</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, stm32f10x_fsmc.o(i.FSMC_NORSRAMCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_LCD_Init
 </UL>
 
-<P><STRONG><a name="[58]"></a>FSMC_NORSRAMInit</STRONG> (Thumb, 230 bytes, Stack size 0 bytes, stm32f10x_fsmc.o(i.FSMC_NORSRAMInit))
-<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_LCD_Init
+<P><STRONG><a name="[55]"></a>FSMC_NORSRAMInit</STRONG> (Thumb, 230 bytes, Stack size 0 bytes, stm32f10x_fsmc.o(i.FSMC_NORSRAMInit))
+<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_LCD_Init
 </UL>
 
-<P><STRONG><a name="[5a]"></a>FindSCR</STRONG> (Thumb, 386 bytes, Stack size 32 bytes, sdio_sdcard.o(i.FindSCR))
+<P><STRONG><a name="[57]"></a>FindSCR</STRONG> (Thumb, 386 bytes, Stack size 32 bytes, sdio_sdcard.o(i.FindSCR))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = FindSCR &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ReadData
+<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ReadData
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetFlagStatus
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_DataConfig
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_DataConfig
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp1Error
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
 </UL>
 
-<P><STRONG><a name="[5e]"></a>GPIO_Configuration</STRONG> (Thumb, 222 bytes, Stack size 8 bytes, lcd.o(i.GPIO_Configuration))
+<P><STRONG><a name="[5b]"></a>GPIO_Configuration</STRONG> (Thumb, 222 bytes, Stack size 8 bytes, lcd.o(i.GPIO_Configuration))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GPIO_Configuration &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5f]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, stm32f10x_gpio.o(i.GPIO_Init))
+<P><STRONG><a name="[5c]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, stm32f10x_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Configuration
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Configuration
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[80]"></a>LCD_Init</STRONG> (Thumb, 198 bytes, Stack size 0 bytes, lcd.o(i.LCD_Init))
+<P><STRONG><a name="[7d]"></a>LCD_Init</STRONG> (Thumb, 198 bytes, Stack size 0 bytes, lcd.o(i.LCD_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[60]"></a>LCD_RST</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, lcd.o(i.LCD_RST))
+<P><STRONG><a name="[5d]"></a>LCD_RST</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, lcd.o(i.LCD_RST))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LCD_RST
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -460,64 +443,64 @@ Global Symbols
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[6b]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
+<P><STRONG><a name="[68]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
-<P><STRONG><a name="[7e]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_PriorityGroupConfig))
+<P><STRONG><a name="[7b]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_PriorityGroupConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[69]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<P><STRONG><a name="[66]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[64]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[61]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
-<P><STRONG><a name="[63]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[60]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
-<P><STRONG><a name="[62]"></a>RCC_Configuration</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.RCC_Configuration))
+<P><STRONG><a name="[5f]"></a>RCC_Configuration</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.RCC_Configuration))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = RCC_Configuration &rArr; SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7b]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[78]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[65]"></a>SDEnWideBus</STRONG> (Thumb, 158 bytes, Stack size 24 bytes, sdio_sdcard.o(i.SDEnWideBus))
+<P><STRONG><a name="[62]"></a>SDEnWideBus</STRONG> (Thumb, 158 bytes, Stack size 24 bytes, sdio_sdcard.o(i.SDEnWideBus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = SDEnWideBus &rArr; FindSCR &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
+<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp1Error
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_EnableWideBusOperation
+<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_EnableWideBusOperation
 </UL>
 
 <P><STRONG><a name="[4e]"></a>SDIO_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_ClearFlag))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
+<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp7Error
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp6Error
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp3Error
@@ -526,25 +509,25 @@ Global Symbols
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdError
 </UL>
 
-<P><STRONG><a name="[75]"></a>SDIO_ClockCmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_ClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<P><STRONG><a name="[72]"></a>SDIO_ClockCmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_ClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
 </UL>
 
-<P><STRONG><a name="[70]"></a>SDIO_Clock_Set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, sdio_sdcard.o(i.SDIO_Clock_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<P><STRONG><a name="[6d]"></a>SDIO_Clock_Set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, sdio_sdcard.o(i.SDIO_Clock_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
-<P><STRONG><a name="[5c]"></a>SDIO_DataConfig</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_DataConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
+<P><STRONG><a name="[59]"></a>SDIO_DataConfig</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_DataConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
 </UL>
 
-<P><STRONG><a name="[6a]"></a>SDIO_DeInit</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_DeInit))
-<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<P><STRONG><a name="[67]"></a>SDIO_DeInit</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_DeInit))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
 <P><STRONG><a name="[4d]"></a>SDIO_GetFlagStatus</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
+<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp6Error
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp3Error
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp2Error
@@ -552,101 +535,101 @@ Global Symbols
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdError
 </UL>
 
-<P><STRONG><a name="[72]"></a>SDIO_GetPowerState</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_GetPowerState))
-<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
+<P><STRONG><a name="[6f]"></a>SDIO_GetPowerState</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_GetPowerState))
+<BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
 </UL>
 
 <P><STRONG><a name="[3b]"></a>SDIO_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, sdio_sdcard.o(i.SDIO_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SDIO_IRQHandler &rArr; SD_ProcessIRQSrc &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
+<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[73]"></a>SDIO_Init</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<P><STRONG><a name="[70]"></a>SDIO_Init</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
 </UL>
 
-<P><STRONG><a name="[5d]"></a>SDIO_ReadData</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_ReadData))
-<BR><BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
+<P><STRONG><a name="[5a]"></a>SDIO_ReadData</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_ReadData))
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
 </UL>
 
-<P><STRONG><a name="[5b]"></a>SDIO_SendCommand</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_SendCommand))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SelectDeselect
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
+<P><STRONG><a name="[58]"></a>SDIO_SendCommand</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_SendCommand))
+<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SelectDeselect
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ProcessIRQSrc
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindSCR
 </UL>
 
-<P><STRONG><a name="[74]"></a>SDIO_SetPowerState</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_SetPowerState))
-<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<P><STRONG><a name="[71]"></a>SDIO_SetPowerState</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_sdio.o(i.SDIO_SetPowerState))
+<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
 </UL>
 
-<P><STRONG><a name="[67]"></a>SD_EnableWideBusOperation</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, sdio_sdcard.o(i.SD_EnableWideBusOperation))
+<P><STRONG><a name="[64]"></a>SD_EnableWideBusOperation</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, sdio_sdcard.o(i.SD_EnableWideBusOperation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = SD_EnableWideBusOperation &rArr; SDEnWideBus &rArr; FindSCR &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDEnWideBus
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
-<P><STRONG><a name="[6e]"></a>SD_GetCardInfo</STRONG> (Thumb, 772 bytes, Stack size 20 bytes, sdio_sdcard.o(i.SD_GetCardInfo))
+<P><STRONG><a name="[6b]"></a>SD_GetCardInfo</STRONG> (Thumb, 772 bytes, Stack size 20 bytes, sdio_sdcard.o(i.SD_GetCardInfo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SD_GetCardInfo
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
-<P><STRONG><a name="[68]"></a>SD_Init</STRONG> (Thumb, 212 bytes, Stack size 24 bytes, sdio_sdcard.o(i.SD_Init))
+<P><STRONG><a name="[65]"></a>SD_Init</STRONG> (Thumb, 212 bytes, Stack size 24 bytes, sdio_sdcard.o(i.SD_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = SD_Init &rArr; SD_EnableWideBusOperation &rArr; SDEnWideBus &rArr; FindSCR &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_DeInit
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SetDeviceMode
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SelectDeselect
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_GetCardInfo
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_EnableWideBusOperation
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_Clock_Set
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_DeInit
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SetDeviceMode
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SelectDeselect
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_PowerON
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_InitializeCards
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_GetCardInfo
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_EnableWideBusOperation
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_Clock_Set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6d]"></a>SD_InitializeCards</STRONG> (Thumb, 316 bytes, Stack size 16 bytes, sdio_sdcard.o(i.SD_InitializeCards))
+<P><STRONG><a name="[6a]"></a>SD_InitializeCards</STRONG> (Thumb, 316 bytes, Stack size 16 bytes, sdio_sdcard.o(i.SD_InitializeCards))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = SD_InitializeCards &rArr; CmdResp6Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetPowerState
+<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetPowerState
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp6Error
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp2Error
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
-<P><STRONG><a name="[6c]"></a>SD_PowerON</STRONG> (Thumb, 450 bytes, Stack size 32 bytes, sdio_sdcard.o(i.SD_PowerON))
+<P><STRONG><a name="[69]"></a>SD_PowerON</STRONG> (Thumb, 450 bytes, Stack size 32 bytes, sdio_sdcard.o(i.SD_PowerON))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = SD_PowerON &rArr; CmdResp7Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SetPowerState
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_Init
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClockCmd
+<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SetPowerState
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_Init
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClockCmd
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp7Error
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp3Error
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp1Error
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdError
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
-<P><STRONG><a name="[66]"></a>SD_ProcessIRQSrc</STRONG> (Thumb, 296 bytes, Stack size 8 bytes, sdio_sdcard.o(i.SD_ProcessIRQSrc))
+<P><STRONG><a name="[63]"></a>SD_ProcessIRQSrc</STRONG> (Thumb, 296 bytes, Stack size 8 bytes, sdio_sdcard.o(i.SD_ProcessIRQSrc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SD_ProcessIRQSrc &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
+<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetFlagStatus
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_ClearFlag
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp1Error
@@ -654,24 +637,28 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_IRQHandler
 </UL>
 
-<P><STRONG><a name="[6f]"></a>SD_SelectDeselect</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, sdio_sdcard.o(i.SD_SelectDeselect))
+<P><STRONG><a name="[6c]"></a>SD_SelectDeselect</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, sdio_sdcard.o(i.SD_SelectDeselect))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SD_SelectDeselect &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
+<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_SendCommand
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CmdResp1Error
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
-<P><STRONG><a name="[71]"></a>SD_SetDeviceMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, sdio_sdcard.o(i.SD_SetDeviceMode))
-<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<P><STRONG><a name="[6e]"></a>SD_SetDeviceMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, sdio_sdcard.o(i.SD_SetDeviceMode))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[7d]"></a>SysTick_CLKSourceConfig</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, misc.o(i.SysTick_CLKSourceConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<P><STRONG><a name="[81]"></a>Send_Bpm</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, showbpm.o(i.Send_Bpm))
+<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[7a]"></a>SysTick_CLKSourceConfig</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, misc.o(i.SysTick_CLKSourceConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 </UL>
 
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SysTick_Handler))
@@ -680,106 +667,106 @@ Global Symbols
 <P><STRONG><a name="[47]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
-<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
 <P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, usart.o(i.USART1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = USART1_IRQHandler &rArr; USART_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[84]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<P><STRONG><a name="[83]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[82]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
+<P><STRONG><a name="[80]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[78]"></a>USART_GetITStatus</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
+<P><STRONG><a name="[75]"></a>USART_GetITStatus</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[83]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(i.USART_ITConfig))
+<P><STRONG><a name="[82]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(i.USART_ITConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = USART_ITConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[7a]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
+<P><STRONG><a name="[77]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[79]"></a>USART_ReceiveData</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
+<P><STRONG><a name="[76]"></a>USART_ReceiveData</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[81]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
+<P><STRONG><a name="[7f]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[8c]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[8b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[8d]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[8c]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[8e]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[8d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[7c]"></a>delay_init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, delay.o(i.delay_init))
+<P><STRONG><a name="[79]"></a>delay_init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, delay.o(i.delay_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delay_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_CLKSourceConfig
+<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_CLKSourceConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[61]"></a>delay_ms</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, delay.o(i.delay_ms))
-<BR><BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_RST
+<P><STRONG><a name="[5e]"></a>delay_ms</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, delay.o(i.delay_ms))
+<BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_RST
 </UL>
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 724 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 318 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = main &rArr; SD_Init &rArr; SD_EnableWideBusOperation &rArr; SDEnWideBus &rArr; FindSCR &rArr; CmdResp1Error
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_RST
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Configuration
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_LCD_Init
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispFlick
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispColor
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_Bpm
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_RST
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Configuration
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FSMC_LCD_Init
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlockWrite
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[7f]"></a>uart_init</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, usart.o(i.uart_init))
+<P><STRONG><a name="[7c]"></a>uart_init</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, usart.o(i.uart_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -787,18 +774,18 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[76]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
+<P><STRONG><a name="[73]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[77]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
+<P><STRONG><a name="[74]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <P>
 <H3>

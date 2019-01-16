@@ -1,5 +1,5 @@
 Dependencies for Project 'LCD', Target 'LCD': (DO NOT MODIFY !)
-F (.\USER\main.c)(0x5C21D6F6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\FWlib\src -I .\Startup -I .\USER -I .\LCD -I .\SYSTEM\delay -I .\SYSTEM\sys -I .\SYSTEM\usart -I .\SYSTEM\sdio -I .\SYSTEM\fatfs\src -I .\SYSTEM\mallol -I .\LCD-I.\RTE\_LCD-ID:\kiel5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\kiel5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\USER\main.c)(0x5C3477BD)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\FWlib\src -I .\Startup -I .\USER -I .\LCD -I .\SYSTEM\delay -I .\SYSTEM\sys -I .\SYSTEM\usart -I .\SYSTEM\sdio -I .\SYSTEM\fatfs\src -I .\SYSTEM\mallol -I .\LCD-I.\RTE\_LCD-ID:\kiel5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\kiel5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (USER\stm32f10x.h)(0x4D783CB4)
 I (.\CMSIS\core_cm3.h)(0x4D523B58)
 I (D:\kiel5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -40,7 +40,7 @@ I (.\SYSTEM\fatfs\src\ff.h)(0x58CD4949)
 I (.\SYSTEM\fatfs\src\integer.h)(0x54D8A8D8)
 I (.\SYSTEM\fatfs\src\ffconf.h)(0x54F2F338)
 I (.\SYSTEM\sdio\sdio_sdcard.h)(0x55BB1C68)
-I (.\LCD\ShowBPM.h)(0x5C208348)
+I (.\LCD\ShowBPM.h)(0x5C344A33)
 F (.\USER\stm32f10x_it.c)(0x4D99A59E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\FWlib\src -I .\Startup -I .\USER -I .\LCD -I .\SYSTEM\delay -I .\SYSTEM\sys -I .\SYSTEM\usart -I .\SYSTEM\sdio -I .\SYSTEM\fatfs\src -I .\SYSTEM\mallol -I .\LCD-I.\RTE\_LCD-ID:\kiel5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\kiel5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
 I (USER\stm32f10x_it.h)(0x4D99A59E)
 I (USER\stm32f10x.h)(0x4D783CB4)
@@ -109,8 +109,8 @@ I (.\SYSTEM\sys\sys.h)(0x550F951B)
 I (.\SYSTEM\fatfs\src\ff.h)(0x58CD4949)
 I (.\SYSTEM\fatfs\src\integer.h)(0x54D8A8D8)
 I (.\SYSTEM\fatfs\src\ffconf.h)(0x54F2F338)
-F (.\LCD\ShowBPM.c)(0x5C208348)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\FWlib\src -I .\Startup -I .\USER -I .\LCD -I .\SYSTEM\delay -I .\SYSTEM\sys -I .\SYSTEM\usart -I .\SYSTEM\sdio -I .\SYSTEM\fatfs\src -I .\SYSTEM\mallol -I .\LCD-I.\RTE\_LCD-ID:\kiel5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\kiel5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\showbpm.o --omf_browse .\objects\showbpm.crf --depend .\objects\showbpm.d)
-I (LCD\ShowBPM.h)(0x5C208348)
+F (.\LCD\ShowBPM.c)(0x5C347890)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\FWlib\src -I .\Startup -I .\USER -I .\LCD -I .\SYSTEM\delay -I .\SYSTEM\sys -I .\SYSTEM\usart -I .\SYSTEM\sdio -I .\SYSTEM\fatfs\src -I .\SYSTEM\mallol -I .\LCD-I.\RTE\_LCD-ID:\kiel5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\kiel5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\showbpm.o --omf_browse .\objects\showbpm.crf --depend .\objects\showbpm.d)
+I (LCD\ShowBPM.h)(0x5C344A33)
 I (.\USER\stm32f10x.h)(0x4D783CB4)
 I (.\CMSIS\core_cm3.h)(0x4D523B58)
 I (D:\kiel5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -139,9 +139,14 @@ I (.\FWlib\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (.\FWlib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\FWlib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\FWlib\inc\misc.h)(0x4D783BB4)
-I (.\SYSTEM\usart\usart.h)(0x50517A82)
+I (LCD\lcd.h)(0x5907098C)
 I (D:\kiel5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+I (D:\kiel5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
+I (.\SYSTEM\delay\delay.h)(0x555AC82B)
 I (.\SYSTEM\sys\sys.h)(0x550F951B)
+I (.\SYSTEM\fatfs\src\ff.h)(0x58CD4949)
+I (.\SYSTEM\fatfs\src\integer.h)(0x54D8A8D8)
+I (.\SYSTEM\fatfs\src\ffconf.h)(0x54F2F338)
 F (.\CMSIS\core_cm3.c)(0x4C0C587E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\FWlib\src -I .\Startup -I .\USER -I .\LCD -I .\SYSTEM\delay -I .\SYSTEM\sys -I .\SYSTEM\usart -I .\SYSTEM\sdio -I .\SYSTEM\fatfs\src -I .\SYSTEM\mallol -I .\LCD-I.\RTE\_LCD-ID:\kiel5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\kiel5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
 I (D:\kiel5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 F (.\CMSIS\system_stm32f10x.c)(0x4D783CB0)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\FWlib\src -I .\Startup -I .\USER -I .\LCD -I .\SYSTEM\delay -I .\SYSTEM\sys -I .\SYSTEM\usart -I .\SYSTEM\sdio -I .\SYSTEM\fatfs\src -I .\SYSTEM\mallol -I .\LCD-I.\RTE\_LCD-ID:\kiel5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\kiel5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)

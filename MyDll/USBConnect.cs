@@ -14,10 +14,7 @@ namespace MyDll
     public partial class USBConnect : UserControl
     {
 
-        public const int WM_DEVICE_CHANGE = 0x219;
-        public const int DBT_DEVICEARRIVAL = 0x8000;
-        public const int DBT_DEVICE_REMOVE_COMPLETE = 0x8004;
-        public const UInt32 DBT_DEVTYP_PORT = 0x00000003;
+    
         static int beforeS;
         public USBConnect()
         {
@@ -32,7 +29,7 @@ namespace MyDll
             {
                 BoundBox.Items.Add(bound);
             }
-            BoundBox.SelectedIndex = 4;
+            BoundBox.SelectedIndex = 8;
         }
       
 

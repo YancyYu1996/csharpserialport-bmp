@@ -29,6 +29,11 @@
 .\objects\showbpm.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\showbpm.o: .\FWlib\inc\stm32f10x_wwdg.h
 .\objects\showbpm.o: .\FWlib\inc\misc.h
-.\objects\showbpm.o: .\SYSTEM\usart\usart.h
+.\objects\showbpm.o: LCD\lcd.h
 .\objects\showbpm.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\showbpm.o: D:\kiel5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\showbpm.o: .\SYSTEM\delay\delay.h
 .\objects\showbpm.o: .\SYSTEM\sys\sys.h
+.\objects\showbpm.o: .\SYSTEM\fatfs\src\ff.h
+.\objects\showbpm.o: .\SYSTEM\fatfs\src\integer.h
+.\objects\showbpm.o: .\SYSTEM\fatfs\src\ffconf.h
