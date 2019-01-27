@@ -4,34 +4,24 @@
 基于c#，用串口给stm32传数据，在stm32上以实现刷图的功能。
 
 #### 软件架构
-软件架构说明
+接口->类库（自定义控件，和引用控件）->form层  如下图
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0127/100023_fa22ceba_2206461.png "微信图片_20190127095949.png")
 
 
 #### 安装教程
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. windows下，exe文件安装需要依赖msi文件。
+2. msi文件直接可以再windows下安装。
+3. 选择安装位置，直接点下一步即可。
 
 #### 使用说明
 
-1. xxxx
-2. xxxx
-3. xxxx
+ **_1. stm32复位后读一次ID可正常刷图。
+2. 刷完一张图继续刷图不需要复位stm32。
+3. 第一次进入请进入到设置里面的默认路径设置选择的图片路径，默认路径不要太大，要不系统会耗费很长时间去遍历所有的文件和文件夹。
+4.默认图片选择区是不可选中，只有读ID成功后可解锁。
+5.发送数据区不需管，是我做测试用的。
+6.在设置中可以修改发送接收的类型和设置定时器的时间，定时时间越长越稳定但越慢（默认值是ok的）_** 
+7.restart按钮点击后需要重新读ID，复位。
+8.设置中的保存文件保存的是所选图片的RGB像素信息的文件。
 
-#### 参与贡献
-
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
