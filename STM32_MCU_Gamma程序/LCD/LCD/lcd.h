@@ -41,7 +41,7 @@ void BlockWrite(unsigned int Xstart,unsigned int Xend,unsigned int Ystart,unsign
 void DispColor(unsigned int color);
 void DispFlick(unsigned int color);
 void sd_showbmp(char * fname);
-
+void DispColorR(unsigned int color);
 
 
 

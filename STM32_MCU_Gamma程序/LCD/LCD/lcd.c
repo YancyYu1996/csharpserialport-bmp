@@ -141,6 +141,25 @@ void DispColor(unsigned int color)
 }	
 #endif
 
+
+void DispColorR(unsigned int color)
+{
+	unsigned int i,j;
+
+	BlockWrite(0,LCD_WIDTH-1,0,LCD_HEIGHT-1);
+
+	for(i=0;i<LCD_WIDTH;i++)
+	{
+	    for(j=0;j<LCD_HEIGHT;j++)
+		{    
+			LCD_DataWrite((0<<2)&0xFF);
+			LCD_DataWrite((color<<2)&0xFF);
+			LCD_DataWrite((0<<2)&0xFF);
+		}
+	}
+
+}	
+
 void LCD_Init(void)
 {
 

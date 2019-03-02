@@ -69,7 +69,7 @@
             // 
             // button2
             // 
-            this.button2.Image = global::Upper_LCD.Properties.Resources.da81ead0c254da287b533255a9ae6411;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(264, 8);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(33, 32);

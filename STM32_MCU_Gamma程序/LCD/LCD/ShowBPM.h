@@ -2,9 +2,9 @@
 #define	__ShowBPM_H
 
 #include "stm32f10x.h"
-void Send_Bpm(unsigned char* pack);
 
-
+void DrawOneDot(unsigned char* pack);
+void DrawOneWidth(unsigned char* pack);
 #endif /* __LED_H */
 
 

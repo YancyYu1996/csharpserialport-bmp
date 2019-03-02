@@ -13,10 +13,10 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Documents;
 using System.IO;
-using IronPython.Hosting;
-using Microsoft.Scripting.Hosting;
+
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Drawing.Imaging;
 
 namespace Upper_LCD_STM32
 {
@@ -27,17 +27,21 @@ namespace Upper_LCD_STM32
         public Displaydelegate disp_delegate;
         public String ReadMold = "";
         public static int RecevieCounter = 0;
-       
-       
+        
+
         int width;   //定义图片的长
         int height;  //定义图片的宽
         byte red;
         byte green;
         byte blue;
-        
 
+        public string FilePath;//得到图片的路径
+        public Bitmap bmp;
         static int y = 0;
         static int x = 0;
+        static int H = 0;
+        byte[] ID = new byte[12];  //存ID的数组
+        bool restart_flag = false;
         private class IconIndexes
 
         {
@@ -61,9 +65,10 @@ namespace Upper_LCD_STM32
         public Form1()
         {
             InitializeComponent();
-            timer1.Tick += new EventHandler(timer1_Tick); //给timer挂起事件
+           // timer1.Tick += new EventHandler(timer1_Tick); //给timer挂起事件
             usbConnect3.ComPort.DataReceived += new SerialDataReceivedEventHandler(Comm_DataReceived);
-         
+            this.width = 600;
+            this.height = 400;
 
         }
 
@@ -88,6 +93,17 @@ namespace Upper_LCD_STM32
                     if (receivedData.Length == 10)
                     {
                         ReadMold = "Read_ID";
+                        STMW.Text = (receivedData[2] * 100 + receivedData[3]).ToString();
+                        STML.Text = (receivedData[4] * 100 + receivedData[5]).ToString();
+                        if ((receivedData[0] == ID[0]) && (receivedData[1] == ID[1]))
+                        {
+                            directoryTree.Enabled = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("读ID不成功");
+                        }
+
                         Read_Mold.Text = ReadMold;
                         Read_Mold.ForeColor = Color.Green;
                     }
@@ -97,7 +113,7 @@ namespace Upper_LCD_STM32
                         Read_Mold.Text = ReadMold;
                         Read_Mold.ForeColor = Color.Red;
                     }
-
+                  
                     //System.Text.Encoding.ASCII.GetString(receivedData);
                     try
                     {
@@ -112,8 +128,12 @@ namespace Upper_LCD_STM32
                                 strRcv += " " + Convert.ToString(d, 16); ;
                         }
                         if (receivedData.Length != 10)
-                            RecieveArea.Text += strRcv;                 //显示信息
-                                                                        //strRcv + "\r\n";             //显示信息
+                        {
+                            RecieveArea.Text = strRcv;                 //显示信息
+                        }
+
+
+                        //strRcv + "\r\n";             //显示信息
                         else
                         {
                             ReciveID.Text = strRcv;
@@ -159,8 +179,8 @@ namespace Upper_LCD_STM32
 
             directoryTree.Nodes.Add(tn);
             tn.Expand();
-
-            TickTime.Text = "1";  //初始化定时器时间
+            
+           // TickTime.Text = "10";  //初始化定时器时间
             string[] geshis = { "十六进制", "字符串" };   //设置默认的发送文件的格式
             toolStripStatusLabel1.Text = "";
             foreach (string geshi in geshis)  
@@ -170,7 +190,10 @@ namespace Upper_LCD_STM32
             }
             SendMode.SelectedIndex = 0;
             RecMode.SelectedIndex = 0;
+            //checkBox2.Checked = true;
+            TickDefaultBox.Text = "100";
         }
+        
         /// <summary>
 
 
@@ -266,10 +289,10 @@ namespace Upper_LCD_STM32
         private void button1_Click(object sender, EventArgs e)
         {
             SendID.Clear();
-            byte[] ID = new byte[12];
+            
             ID[0] = 0x95;  //前两代表个字节型号
-            ID[1] = 0x00;
-            ID[2] = 0x03;
+            ID[1] = 0x03;
+            ID[2] = 0x00;
             ID[3] = 0x00;
             ID[4] = 0x00;
             ID[5] = 0x00;
@@ -313,17 +336,7 @@ namespace Upper_LCD_STM32
                 MessageBox.Show("请先打开串口！", "Error");
                 return;
             }
-            if (timer1.Enabled == false)  //发送，使能定时器
-            {
-                y = 0;      //先将行列清零
-                x = 0;
-                timer1.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("定时器正在发送,请稍后！");
 
-            }
             String strSend = SendArea.Text;
             if (SendMode.Text == "十六进制")	//“HEX发送” 按钮 
             {
@@ -335,27 +348,22 @@ namespace Upper_LCD_STM32
 
                 string ChangeFlag;
                 ChangeFlag = HEX2ASCII(strSend,ref value);
-                    
-          //      if(ChangeFlag != "")
-          //      {
-                    value[strArray.Length] = 0x0D;
-                    value[strArray.Length+1] = 0x0A;
-                //     }
 
+                value[strArray.Length+1] = 0x0D;
+                value[strArray.Length+2] = 0x0A;
 
                 if (usbConnect3.ComPort.IsOpen)
                 {
                     this.usbConnect3.ComPort.Write(value, 0, value.Length);
-
                 }
                    
 
 
             }
-            else		//以字符串形式发送时 
-            {
-                this.usbConnect3.ComPort.WriteLine(SendArea.Text);    //写入数据
-            }
+         //   else		//以字符串形式发送时 
+         //   {
+         //     this.usbConnect3.ComPort.WriteLine(SendArea.Text);    //写入数据
+        //    }
 
         }
         /// <summary>
@@ -399,14 +407,14 @@ namespace Upper_LCD_STM32
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
-            {
-                SendArea.Clear();
-            }
-            else if (tabControl1.SelectedIndex == 1)
-            {
+          // if (tabControl1.SelectedIndex == 0)
+          //  {
+          //      SendArea.Clear();
+          //  }
+          //  else if (tabControl1.SelectedIndex == 1)
+          //  {
                 this.RecieveArea.Clear();
-            }
+         //   }
 
         }
 
@@ -440,18 +448,16 @@ namespace Upper_LCD_STM32
 
         private void directoryTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            Thread.Sleep(100);
-     
-            y = 0;
-            x = 0;
-            lenth.Text = "0";
-            FilePathBox.Text = Convert.ToString(e.Node.Tag);
-           //ScriptEngine pyEngine = Python.CreateEngine();//创建Python解释器对象
-           //dynamic py = pyEngine.ExecuteFile(@"OpenPng.py");//读取脚本文件
+       
+            FilePath = Convert.ToString(e.Node.Tag);
+            
             SendArea.Clear();
+
             try
             {
-                using (FileStream fs = new FileStream(FilePathBox.Text, FileMode.Open, FileAccess.Read)) //图片数据流
+
+
+                using (FileStream fs = new FileStream(FilePath, FileMode.Open, FileAccess.Read)) //图片数据流
                 {
                     System.Drawing.Image image = System.Drawing.Image.FromStream(fs);
                     width = image.Width;
@@ -460,19 +466,20 @@ namespace Upper_LCD_STM32
                     PicW.Text = height.ToString();
                     progressBar1.Maximum = width * height;  //记录像素点的最大个数
                     lenth.Text = "0";
-                    timer1.Interval = Convert.ToInt16(TickTime.Text);       //设置定时器时间
-                    timer1.Enabled = true;                                  //定时器开始工作  
+
                 }
-               
             }
             catch
             {
 
             }
 
+    
+
             try
             {
-                pictureBox1.Image = Image.FromFile(FilePathBox.Text);
+                pictureBox1.Image = Image.FromFile(FilePath);
+                bmp = new Bitmap(FilePath);
             }
             catch
             {
@@ -480,84 +487,214 @@ namespace Upper_LCD_STM32
             }
 
           
-
-
-
-
-
-
-
-
-
+                                             
         }
 
- 
-
-        private void timer1_Tick(object sender, EventArgs e)
+        public static void setlog(string contents)   //打开文件
         {
-            if (usbConnect3.ComPort.IsOpen)
-                sendpng();
 
         }
 
-        public string sendpng()
+     
+
+        public void sendpng()
         {
             byte[] BytesRGB = new byte[5];
 
             BytesRGB[3] = 0x0D;
             BytesRGB[4] = 0x0A;
-          
+
             try
             {
-                Bitmap bmp = new Bitmap(FilePathBox.Text);
-                if ((x < width) && (y < height))
-                {              
-                            Color pixelColor = bmp.GetPixel(x, y);
-                            //颜色的 RED 分量值
-                            red = pixelColor.R;
-                            //颜色的 GREEN 分量值
-                            green = pixelColor.G;
-                            //颜色的 BLUE 分量值
-                            blue = pixelColor.B;
-                            BytesRGB[0] = Convert.ToByte(red);
-
-                            BytesRGB[1] = Convert.ToByte(green);
-                            BytesRGB[2] = Convert.ToByte(blue);
-                            //   SendArea.Text += red.ToString("X2") + " " + green.ToString("X2") + " " + blue.ToString("X2") + " ";
-
-                            if (usbConnect3.ComPort.IsOpen)    //如果检测到COM连接，再发送读取到的像素数据
-                            {
-                                toolStripStatusLabel1.Text = "发送图片数据->sSTM32";
-                                toolStripStatusLabel1.ForeColor = Color.Red;
-                                usbConnect3.ComPort.Write(BytesRGB, 0, 5);
-                            }
-                            lenth.Text = (width * y + x+1).ToString();  //求出此时发送的数据个数
-                            progressBar1.Value = width * y + x+1;
-                    x += 1;
-                    if(x == width)
+                Bitmap bmp = new Bitmap(FilePath);
+               
+                    
+                    for (int test = 0; test < width; test++)
                     {
-                    x = 0;
-                    y += 1;
+                    if (y < height)
+                    {
+                        Color pixelColor = bmp.GetPixel(x, y);
+                        //颜色的 RED 分量值
+                        red = pixelColor.R;
+                      
+                        //颜色的 GREEN 分量值
+                        green = pixelColor.G;
+                       
+                        //颜色的 BLUE 分量值
+                        blue = pixelColor.B;
+                        
+                        BytesRGB[0] = Convert.ToByte(red);//保存到文件中                 
+                        BytesRGB[1] = Convert.ToByte(green);
+                        BytesRGB[2] = Convert.ToByte(blue);
+                        //   SendArea.Text += red.ToString("X2") + " " + green.ToString("X2") + " " + blue.ToString("X2") + " ";
+
+                        if (usbConnect3.ComPort.IsOpen)    //如果检测到COM连接，再发送读取到的像素数据
+                        {
+                           
+                            usbConnect3.ComPort.Write(BytesRGB, 0, 5);
+                            ReadMold = "Bmp_Send";
+                            Read_Mold.Text = ReadMold;
+                            Read_Mold.ForeColor = Color.Red;
+                            toolStripStatusLabel1.Text = "发送图片数据->sSTM32";
+                            toolStripStatusLabel1.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            MessageBox.Show("串口未连接");
+                            break;
+
+                        }
+                        lenth.Text = (width * y + x + 1).ToString();  //求出此时发送的数据个数
+                        progressBar1.Value = width * y + x + 1;
+                        x += 1;
+                        if (x == width)
+                        {
+                            x = 0;
+                            y += 1;
+                        }
+                        if (y == height)
+                        {
+                            toolStripStatusLabel1.Text = "发送完成";
+                            toolStripStatusLabel1.ForeColor = Color.Green;
+                          //  timer1.Enabled = false;
+                            
+                        }
+              
                     }
+             
                 }
-
-                else
-                {
-                    toolStripStatusLabel1.Text = "发送完成";
-                    toolStripStatusLabel1.ForeColor = Color.Green;
-                    timer1.Enabled = false;
-
-                }
-                return "true";
+                   
             }
-            catch
+            catch (Exception error)
             {
-                return "false";
+                MessageBox.Show(error.ToString());
+            }
 
+        }
+        public void SendAllPix()
+        {
+            byte[] BytesRGB = new byte[6];
+            BytesRGB[0] = 0x01;
+            BytesRGB[4] = 0x0D;
+            BytesRGB[5] = 0x0A;
+            progressBar1.Maximum = width * height;
+            try
+            {
+                Bitmap bmp = new Bitmap(FilePath);
+
+
+                for (int test = 0; test < height; test++)
+                {
+                    for (int test2 = 0; test2 < width; test2++)
+                    {
+                        Color pixelColor = bmp.GetPixel(test2, test);
+                        //颜色的 RED 分量值
+                        red = pixelColor.R;
+
+                        //颜色的 GREEN 分量值
+                        green = pixelColor.G;
+
+                        //颜色的 BLUE 分量值
+                        blue = pixelColor.B;
+
+                        BytesRGB[1] = Convert.ToByte(red);//保存到文件中                 
+                        BytesRGB[2] = Convert.ToByte(green);
+                        BytesRGB[3] = Convert.ToByte(blue);
+                        //   SendArea.Text += red.ToString("X2") + " " + green.ToString("X2") + " " + blue.ToString("X2") + " ";
+                        if (usbConnect3.ComPort.IsOpen)    //如果检测到COM连接，再发送读取到的像素数据
+                        {
+                            Thread.Sleep(5);
+                            usbConnect3.ComPort.Write(BytesRGB, 0, 6);
+                            ReadMold = "Bmp_Send";
+                            Read_Mold.Text = ReadMold;
+                            Read_Mold.ForeColor = Color.Red;
+                            toolStripStatusLabel1.Text = "发送图片数据->STM32";
+                            toolStripStatusLabel1.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            MessageBox.Show("串口未连接");
+                            break;
+
+                        }
+                        lenth.Text = (width * test + test2 + 1).ToString();  //求出此时发送的数据个数
+                        progressBar1.Value = (width * test + test2 + 1);
+                    }
+
+                    }
+                toolStripStatusLabel1.Text = "发送完成";
+                toolStripStatusLabel1.ForeColor = Color.Green;
+
+
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString());
             }
 
 
         }
+
+        public void SendOneWidth(int h)
+        {
+            byte[] BytesRGB = new byte[width*3+3];
+            BytesRGB[0] = 0x02;
+            BytesRGB[width*3+1] = 0x0D;
+            BytesRGB[width*3+2] = 0x0A;
+            progressBar1.Maximum = (width * height);
+            try
+            {
+                
+
+                    for (int test2 = 0; test2 < width; test2++)
+                    {
+                        Color pixelColor = bmp.GetPixel(test2, h);
+                        //颜色的 RED 分量值
+                        red = pixelColor.R;
+
+                        //颜色的 GREEN 分量值
+                        green = pixelColor.G;
+
+                        //颜色的 BLUE 分量值
+                        blue = pixelColor.B;
+
+                        BytesRGB[3 * test2+1] = Convert.ToByte(red);//保存到文件中                 
+                        BytesRGB[3 * test2 + 2] = Convert.ToByte(green);
+                        BytesRGB[3 * test2 + 3] = Convert.ToByte(blue);
+                        //   SendArea.Text += red.ToString("X2") + " " + green.ToString("X2") + " " + blue.ToString("X2") + " ";
+
+
+                    }
+                    
+                    if (usbConnect3.ComPort.IsOpen)    //如果检测到COM连接，再发送读取到的像素数据
+                    {
+
+                        usbConnect3.ComPort.Write(BytesRGB, 0, width * 3 + 3);
+                        ReadMold = "Bmp_Send";
+                        Read_Mold.Text = ReadMold;
+                        Read_Mold.ForeColor = Color.Red;
+                        toolStripStatusLabel1.Text = "发送图片数据->sSTM32";
+                        toolStripStatusLabel1.ForeColor = Color.Red;
+                        lenth.Text = (width * (h+1)).ToString();  //求出此时发送的数据个数
+                        progressBar1.Value = (width * (h+1));
+                    }
+                    else
+                    {
+                        MessageBox.Show("串口未连接");
+
+                    }
+
+               
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.ToString());
+                timer1.Enabled = false;
+            }
+
+
+        }
+
 
         private void 默认发送格式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -567,9 +704,228 @@ namespace Upper_LCD_STM32
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+
         }
 
+        private void usbConnect3_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+        
+        }
+
+        private void GetPng_txt()
+        {
+           
+            
+
+        }
+
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+        
        
+  
+
+
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RecieveArea_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://gitee.com/Yancy_galaxy_1191500820/csharpserialport-bmp/blob/master/README.md");
+        }
+
+        private void 保存为ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            //设置保存文件对话框的标题
+            sfd.Title = "请选择要保存的文件路径";
+            //初始化保存目录，默认exe文件目录
+            sfd.InitialDirectory = Application.StartupPath;
+            //设置保存文件的类型
+            sfd.Filter = "文本文件|*.txt|音频文件|*.wav|图片文件|*.jpg|所有文件|*.*";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                //获得保存文件的路径
+                string filePath = sfd.FileName;
+                //保存
+
+                using (FileStream fsWrite = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                {
+                    StreamWriter FileWrite = new StreamWriter(fsWrite);
+
+                    toolStripStatusLabel1.Text = "正在读取...";
+                    toolStripStatusLabel1.ForeColor = Color.Green;
+                    try
+                    {
+
+
+                        Bitmap bmp = new Bitmap(FilePath);
+                        for (int test = 0; test < width * height; test++)
+                        {
+                            if (y <= height)
+                            {
+                                Color pixelColor = bmp.GetPixel(x, y);
+                                //颜色的 RED 分量值
+                                red = pixelColor.R;
+
+                                //颜色的 GREEN 分量值
+                                green = pixelColor.G;
+
+                                //颜色的 BLUE 分量值
+                                blue = pixelColor.B;
+
+                                progressBar1.Value = width * y + x + 1;
+                                FileWrite.WriteLine("Red:" + red + "; " + "Green:" + red + "; " + "Blue:" + red + "; ");
+
+                                x += 1;
+                                if (x == width)
+                                {
+                                    x = 0;
+                                    y += 1;
+                                }
+                                if (y == height)
+                                {
+                                    FileWrite.Close();
+                                    fsWrite.Close();
+                                    toolStripStatusLabel1.Text = "读取完成";
+                                    toolStripStatusLabel1.ForeColor = Color.Green;
+                              //      timer1.Enabled = false;
+
+                                }
+                            }
+
+                        }
+                    }
+                    catch
+                    {
+
+                        MessageBox.Show("读取图片错误");
+                    }
+
+                }
+            }
+
+        }
+
+        private void SendBPMBut_Click(object sender, EventArgs e)
+        {
+            H = 0;
+            timer1.Enabled = false;
+            
+            y = 0;
+            x = 0;
+            lenth.Text = "0";
+            if (!usbConnect3.ComPort.IsOpen)
+            {
+                MessageBox.Show("串口未连接");
+                return;
+            }
+            if (restart_flag == true)
+            {
+                restart_flag = false;
+                MessageBox.Show("复位后请重新读ID");
+                return;
+            }
+
+            if ((width.ToString() != STMW.Text) || (height.ToString() != STML.Text))  //判断与目标长度是否一样
+            {
+                DialogResult dr = MessageBox.Show("图片与目标长度不一致，是否发送！", "尺寸提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    timer1.Enabled = true;
+                    timer1.Interval = Convert.ToInt16(TickDefaultBox.Text);
+                    //SendOneWidth(H);
+                }
+                else
+                {
+
+                }
+
+
+            }
+            else
+            {
+                timer1.Enabled = true;
+                timer1.Interval = Convert.ToInt16(TickDefaultBox.Text);
+                //SendOneWidth(H);
+
+            }
+        }
+
+     
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            try
+            {
+                SendOneWidth(H);
+                H++;
+                if (H == height)
+                {
+                    toolStripStatusLabel1.Text = "发送完成";
+                    toolStripStatusLabel1.ForeColor = Color.Green;
+                    timer1.Enabled = false;
+                }
+            }
+            catch(Exception error)
+           {
+                MessageBox.Show(error.ToString());
+            }
+           
+        }
+
+        private void restart_Click(object sender, EventArgs e)
+        {
+            SendID.Clear();
+
+            ID[0] = 0x95;  //前两代表个字节型号
+            ID[1] = 0x03;
+            ID[2] = 0x00;
+            ID[3] = 0x00;
+            ID[4] = 0x00;
+            ID[5] = 0x00;
+            ID[6] = 0x00;
+            ID[7] = 0x00;
+            ID[8] = 0x01;
+            ID[9] = 0xBB;// 结束的标志位
+            ID[10] = 0x0D; //后两个字节必须为0x0d，0x0a；
+            ID[11] = 0x0A;
+            for (byte i = 0; i < ID.Length; i++)
+            {
+                SendID.Text += Convert.ToString(ID[i], 16);
+            }
+            if (usbConnect3.ComPort.IsOpen)
+            {
+                this.usbConnect3.ComPort.Write(ID, 0, ID.Length);
+
+            }
+            else
+            {
+                MessageBox.Show("串口没有打开");
+            }
+        }
     }
     
     }

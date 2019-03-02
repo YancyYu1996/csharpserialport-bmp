@@ -30,6 +30,23 @@ namespace MyDll
                 BoundBox.Items.Add(bound);
             }
             BoundBox.SelectedIndex = 8;
+
+            string[] t = SerialPort.GetPortNames();
+   
+                foreach (string com in t)
+                {
+
+                    USBConBox.Items.Add(com);
+
+                }
+
+            try
+            {
+                USBConBox.SelectedIndex = 0;
+            }
+            catch
+            { }
+
         }
       
 
@@ -44,16 +61,23 @@ namespace MyDll
 
            
 
-            if ((beforeS != t.Length) && (!ComPort.IsOpen))
+            if ((USBConBox.Items.Count != t.Length) && (!ComPort.IsOpen))
             {
-               
+                USBConBox.Items.Clear();
                 foreach (string com in t)
                 {
-                  
-                        USBConBox.Items.Add(com);
+
+                    USBConBox.Items.Add(com);
                               
                 }
-                
+                try
+                {
+                    USBConBox.Text = t[0];
+                }
+                catch
+                {
+                    USBConBox.Items.Clear();
+                }
             }
             beforeS = t.Length;
 
@@ -68,7 +92,7 @@ namespace MyDll
             }
             else
             {
-                USBConBox.Text = t[0];
+              
                 OpenBut.Enabled = true;
                 OpenBut.ForeColor = Color.Black;
                 FindS.Text = "找到串口";
@@ -113,7 +137,16 @@ namespace MyDll
                 {
                    
                     ComPort.BaudRate =Convert.ToInt32(BoundBox.Text);
-                    ComPort.Open();
+                    try
+                    {
+                        ComPort.Open();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("设备没有正常连接");
+                        break;
+                    }
+                    
                     
                 }
                
